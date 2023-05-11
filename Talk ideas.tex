@@ -3,20 +3,32 @@
 \title{Rough ideas for talk}
 \begin{document}
 \maketitle
-Most likely -- introduce the background, give intuition for the proof (and sketch some of the other structure results in ANT?). [[Sketch overarching ideas?]]
+% Most likely -- introduce the background, give intuition for the proof (and sketch some of the other structure results in ANT?). [[Sketch overarching ideas?]]
 
-Overview: Let $K$ be a fixed number field [finite extension of $\Q$] of degree $[K : \Q] = n = r + 2s$ ($r$ the number of embeddings $K \hookrightarrow \R$, $s$ the number of conjugate pairs of embeddings $K \hookrightarrow \C$) -- Talk a bit about how these embedding numbers are well defined (separability implies $K = \Q(\a)$, and look at $f_\Q^\a \in \Q[x]$)
+% Overview: Let $K$ be a fixed number field [finite extension of $\Q$] of degree $[K : \Q] = n = r + 2s$ ($r$ the number of embeddings $K \hookrightarrow \R$, $s$ the number of conjugate pairs of embeddings $K \hookrightarrow \C$) -- Talk a bit about how these embedding numbers are well defined (separability implies $K = \Q(\a)$, and look at $f_\Q^\a \in \Q[x]$)
+% \begin{enum}
+%     \item \emph{Background:}
+%     \begin{enum2}
+%         \item Number field objects and constants
+%         \begin{enum2}
+%             \item Ring of integers [[Integral closure?]]; properties (unique prime ideal factorisation)
+%             \item Ideal group (fractional ideals; every ideal is ``invertible''); the ideal norm (reasonable notion of ``size''); ideal class group, the class number (finiteness -- ``every ideal class contains an \underline{integral} ideal of bounded norm'')
+%             \item Unit group (structure theorem and regulator)
+%             \item Discriminant (description with factorisation -- getting less primes than expected)
+%         \end{enum2}
+%     \item Dedekind zeta function -- Motivate as a generalisation of Riemann zeta.
+%     \end{enum2}
+% \end{enum}
+
+Overarching idea: give an example with $K = \Q(i)$, sketching the key ideas behind the proof. Run through an example of computing $\lim_{s \to 1^+} (s - 1)\zeta_{\Q(i)}(s)$. Todo:
 \begin{enum}
-    \item \emph{Background:}
-    \begin{enum2}
-        \item Number field objects and constants
-        \begin{enum2}
-            \item Ring of integers [[Integral closure?]]; properties (unique prime ideal factorisation)
-            \item Ideal group (fractional ideals; every ideal is ``invertible''); the ideal norm (reasonable notion of ``size''); ideal class group, the class number (finiteness -- ``every ideal class contains an \underline{integral} ideal of bounded norm'')
-            \item Unit group (structure theorem and regulator)
-            \item Discriminant (description with factorisation -- getting less primes than expected)
-        \end{enum2}
-    \item Dedekind zeta function -- Motivate as a generalisation of Riemann zeta.
-    \end{enum2}
+    \item Introduce the $\zeta_{\Q(i)}(s) = \sum_{0 \neq I \subseteq \Z[i]}\frac1{[\Z[i] : I]^s} = \sum_{a \geq 0, b > 0}\frac1{(a^2 + b^2)^{s/2}}$.
+    \item Rewrite $\zeta_{\Q(i)}$ in terms of point counting over a cone in $\C$.
+    \item Bring in theorem 3 (in weak generality) and sketch proof.
+    \item Compute the volumes $v$ and $\Delta$ (quite straightforward with $\Z[i] \hookrightarrow \Q(i) \hookrightarrow \C$) to show 
+    $$
+        \lim_{s \to 1^+}(s - 1)\zeta_{\Q(i)}(s) = \frac\pi2
+    $$
+    \item Talk a little bit about the generalisation
 \end{enum}
 \end{document}
