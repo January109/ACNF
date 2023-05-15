@@ -8,22 +8,66 @@ Outline ACNF, show how distribution of ideals relates
 \np
 \tableofcontents
 \chapter{Background} % Set up notation
-Let $K / \Q$ be a finite extension, which we will refer to as a \emph{number field}. To each such field we have a \emph{ring of integers} $\o_K$ which plays a similar role to $\Z \subseteq \Q$, defined as the set (subring) of $x \in K$ which are roots of monic $f \in \Z[x]$. 
+Let $K / \Q$ be a finite extension of degree $n$, which we will refer to as a \emph{number field}. Then $K$ is of the form $\Q(\a)$ for some $\a \in \ol\Q$ by separability, and we can consider the embeddings $K \hookrightarrow \C$. These correspond to sending $\a$ to a root of its minimal polynomial in $\C$, and so come in conjugate pairs. Throughout this report, we write $r$ for the number of embeddings with image in $\R$, and $s$ for the number of conjugate pairs of complex embeddings, so that $n = r + 2s$.
+
+To each such number field, we have a \emph{ring of integers} $\o_K$ which plays a similar role to $\Z \subseteq \Q$, defined as the set (subring \textbf{[[reference??]]}) of $x \in K$ which are roots of monic integer polynomials. The ring of integers naturally corresponds to the number field $K$ in that it is the maximal finitely-generated $\Z$-submodule of $K$, and the minimal subring of $K$ admitting \emph{unique prime ideal factorisation} (i.e. where every ideal splits as a product of prime ideals). \textbf{[[mention $\Frac(\o_K) = K$??]]} 
+
+In general, $\o_K$ does not admit unique prime factorisation, and we can quantify the failure of unique prime ideal factorisation in $\o_K$ by considering what proportion of ideals are principal (i.e. correspond to elements of $\o_K$). We do this by constructing a group of ideals under the usual multiplication. 
+
+Noting that the $\o_K$-submodules of $\o_K$ are exactly the ideals $I \subseteq \o_K$, we define a \emph{fractional ideal $I$} to be a non-zero $\o_K$-submodule of $K$ with $xI \subseteq \o_K$ for some $x \in \o_K$, so that the fractional ideals are of the form $\frac1xI$ for some $x \in \o_K$, $0 \neq I \subseteq \o_K$. In the case of $\o_K \subseteq K$, every fractional ideal $I$ is \emph{invertible} under ideal multiplication \textbf{[[Reference??]]}, i.e. has a fractional ideal $J$ with $IJ = JI = \o_K$, so the set of fractional ideals forms an abelian group $\I(\o_K)$. The principal fractional ideals $\P(\o_K) \defeq \set{\a\o_K \mid \a \in K^*}$ are a subgroup of $\I(\o_K)$, and the failure of unique factorisation is described by the size of the quotient $\Cl(K) \defeq \I(\o_K) / \P(\o_K)$, which we refer to as the \emph{class group of $K$}. A large structure result states that the class group is finite for any number field $K$, and we refer to its size $h_K$ as the \emph{class number of $K$}.
+
+The number field $K$ has various notions of size for ideals and elements: for elements we have the \emph{field norm}
+\begin{align*}
+    N_{K / \Q} : K &\to \Q \\
+    \b &\mapsto \prod_{\sigma : K \to \C}\sigma(\b)
+\end{align*}
+This is well-defined since for any $\b$, each $\sigma : \Q(\b) \to \C$ has exactly $[K : \Q(\b)]$ extensions, and so
+$$
+    N_{K / \Q}(\b) = \brac{\prod_{\sigma : \Q(\b) \to \C}\sigma(\b)}^{[K : \Q(\b)]}
+$$
+and this is rational as the product is $(-1)^{[\Q(\b) : \Q]}$ multiplied by the constant term of the minimal polynomial of $\b$ over $\Q$. We also have the \emph{ideal norm} for ideals $0 \neq I \subseteq \o_K$, defined by 
+$$
+    N(I) = [\o_K : I]
+$$
+and this is multiplicative since $\o_K$ has unique factorisation.
+
+% This subring is natural in the sense that it admits unique \emph{prime ideal factorisation}, that is, every ideal splits uniquely the product of prime ideals (under the usual ideal product where $IJ = (i_kj_l)_{k, l}$ where $I = (i_k)_k$ and $J = (j_l)_l$).
+
+Another important part of the structure of $\o_K$ is the \emph{unit group} $\o_K^*$, which is dual to the ideal group in the sense that for non-zero principal ideals, $(\a) = (\a')$ if and only if $\a/\a' \in \o_K^*$. We can view the unit group geometrically by embedding $K^*$ into $\R^{r + s}$ by choosing a single complex embedding from each conjugate pair, and noting the value of $[\R(\sigma(z)) : \R]\log\abs{\sigma(z)}$ is the same under $\sigma \leftrightarrow \ol\sigma$, we can consider its image under the map
+\begin{align*}
+    \Log : K^* &\to \R^{r + s} \\
+    z &\mapsto ([\R(\sigma(z)) : \R]\log\abs{\sigma(z)})_{\sigma}
+\end{align*}
+Under this map, the image of $\o_K^*$ is a lattice in the ``trace-zero hyperplane''
+$$
+    \R_0^{r + s} \defeq \set{(x_1, \ldots, x_{r + s}) \ \bigg| \ \sum_{i = 1}^{r + s}x_i = 0}
+$$
+% Unit group $\o_K^*$, Dirichlet's unit theorem (roots of unity denoted $\mu_K$ of cardinality $\omega_K$), $\Log$, trace zero hyperplane and regulator (volume induced by taking measure corresponding to a coordinate projection); volume
+
+We also have a structure result for the unit group, which states that $\o_K^* = \mu_K \times U$, where $\mu_K$ is the group of roots of unity in $K$ \textbf{(whose size we denote $\omega_K$)}, and $U$ is a free $\Z$-module of rank $r + s - 1$.
+
+We can consider the ideals and the units ...
+
+``Sizes of elements''
+
+% Main idea: Introduce the concepts and give intuitive / reasonable ways to think about them.
 
 % Considerations: Either gloss past with verbal explanations, or give structured definition by definition
 
-Definitions: Number field [embeddings] $K$, ring of integers $\o_K$, field norm $N$ [in terms of embeddings]
+% Definitions: Number field [embeddings] $K$, ring of integers $\o_K$, 
 
-Fractional ideals, invertible ideals, class group $\Cl(K)$, class number $h$
+field norm $N$ [in terms of embeddings]
 
-Unit group $\o_K^*$, Dirichlet's unit theorem (roots of unity denoted $\mu_K$ of cardinality $\omega_K$), $\Log$, trace zero hyperplane and regulator (volume induced by taking measure corresponding to a coordinate projection); volume
+% Fractional ideals, invertible ideals (every fractional ideal is invertible), class group $\Cl(K)$, [[theorem -- class group is finite.]] class number $h$
 
-The Dedekind zeta function (state both formulations)
+% Class group/number as a measure of the failure of unique factorisation.
+
+The Dedekind zeta function (state both formulations - norms of ideals and number of ideals of each norm)
 
 State the theorem
 
 \section{Geometry}
-Geometric interpretation $K \hookrightarrow K_\R$ (and volume), discriminant, lattices, covolume of $\o_K$ and ideals
+Geometric interpretation $K \hookrightarrow K_\R$ (and volume), discriminant (of modules), lattices, covolume of $\o_K$ and ideals
 
 \chapter{The analytic class number formula}
 \section{Series and continuations} % COME UP WITH BETTER NAMES
