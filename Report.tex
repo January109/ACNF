@@ -4,13 +4,15 @@
 \begin{document}
 \maketitle
 \abstract
+We give an outline of some algebraic number theory and describe the proof that the Dedekind zeta function has a meromorphic continuation to $\Re(s) > 1 - 1/n$, except for a simple pole at $s = 1$, whose residue consists of many fundamental invariants of the number field, and is referred to the analytic class number formula.
+
 Outline ACNF, show how distribution of ideals relates
 \np
 \tableofcontents
 \chapter{Background} % Set up notation
 Let $K / \Q$ be a finite extension of degree $n$, which we will refer to as a \emph{number field}. Then $K$ is of the form $\Q(\a)$ for some $\a \in \ol\Q$ by separability, and we can consider the embeddings $K \hookrightarrow \C$. These correspond to sending $\a$ to a root of its minimal polynomial in $\C$, and so come in conjugate pairs. Throughout this report, we write $r$ for the number of embeddings with image in $\R$, and $s$ for the number of conjugate pairs of complex embeddings, so that $n = r + 2s$.
 
-To each such number field, we have a \emph{ring of integers} $\o_K$ which plays a similar role to $\Z \subseteq \Q$, defined as the set (subring \textbf{[[reference??]]}) of $x \in K$ which are roots of monic integer polynomials. The ring of integers naturally corresponds to the number field $K$ in that it is the maximal finitely-generated $\Z$-submodule of $K$, and the minimal subring of $K$ admitting \emph{unique prime ideal factorisation} (i.e. where every ideal splits as a product of prime ideals). \textbf{[[mention $\Frac(\o_K) = K$??]]} 
+To each such number field, we have a \emph{ring of integers} $\o_K$ which plays a similar role to $\Z \subseteq \Q$, defined as the set (subring \textbf{[[reference??]]}) of $x \in K$ which are roots of monic integer polynomials, and this is a free $\Z$-module of rank $n$. The ring of integers naturally corresponds to the number field $K$ in that it is the maximal finitely-generated $\Z$-submodule of $K$, and the minimal subring of $K$ admitting \emph{unique prime ideal factorisation} (i.e. where every ideal splits as a product of prime ideals). \textbf{[[mention $\Frac(\o_K) = K$??]]} 
 
 In general, $\o_K$ does not admit unique prime factorisation, and we can quantify the failure of unique prime ideal factorisation in $\o_K$ by considering what proportion of ideals are principal (i.e. correspond to elements of $\o_K$). We do this by constructing a group of ideals under the usual multiplication. 
 
@@ -29,26 +31,42 @@ and this is rational as the product is $(-1)^{[\Q(\b) : \Q]}$ multiplied by the 
 $$
     N(I) = [\o_K : I]
 $$
-and this is multiplicative since $\o_K$ has unique factorisation.
+which is multiplicative, in essence due to the fact that $\o_K$ admits unique prime ideal factorisation.
 
 % This subring is natural in the sense that it admits unique \emph{prime ideal factorisation}, that is, every ideal splits uniquely the product of prime ideals (under the usual ideal product where $IJ = (i_kj_l)_{k, l}$ where $I = (i_k)_k$ and $J = (j_l)_l$).
 
-Another important part of the structure of $\o_K$ is the \emph{unit group} $\o_K^*$, which is dual to the ideal group in the sense that for non-zero principal ideals, $(\a) = (\a')$ if and only if $\a/\a' \in \o_K^*$. We can view the unit group geometrically by embedding $K^*$ into $\R^{r + s}$ by choosing a single complex embedding from each conjugate pair, and noting the value of $[\R(\sigma(z)) : \R]\log\abs{\sigma(z)}$ is the same under $\sigma \leftrightarrow \ol\sigma$, we can consider its image under the map
+% which is dual to the ideal group in the sense that for non-zero principal ideals, $(\a) = (\a')$ if and only if $\a/\a' \in \o_K^*$
+We can view the number field geometrically through the embeddings $K \to \C$, by embedding $K$ into the $n$-dimensional $\R$-vector space $K_\R \defeq \set{(z_\sigma)_{\sigma} \in \prod_{\sigma : K \to \C}\C \mid z_{\ol\sigma} = \ol{z}_\sigma}$ by $x \mapsto (\sigma(x))_{\sigma}$. We identify $K_\R$ with $\R^r \times \C^s$ by choosing one embedding from each conjugate pair: writing the embeddings as $\sigma_1, \ldots, \sigma_r, \sigma_{r + 1}, \ol{\sigma_{r + 1}}, \ldots, \sigma_{r + s}, \ol{\sigma_{r + s}}$, our identification is exactly $(z_\sigma)_\sigma \leftrightarrow (z_{\sigma_i})_{i = 1}^{r + s}$. Volumes in $K_\R$ are induced by the standard inner product on $\prod_{\sigma : K \to \C}\C \mid z_{\ol\sigma} = \C^n$, which yields the usual volume in the components corresponding to real embeddings $K \to \R$, but gives twice the volume in components corresponding to conjugate pairs: writing $z_j = x_j + y_ji$ for $j = 1, 2$, the inner product in these components is given by $\lrangle{(z_1, \ol{z_1}), (z_2, \ol{z_2})} = z_1\ol{z_2} + \ol{z_1}z_2 = 2\Re(z_1\ol{z_2}) = 2(x_1y_1 + x_2y_2)$.
+
+% IMPORTANT - TALK ABOUT VOLUMES BEING FUNKY
+
+Under this embedding, the image of $\o_K$ is a \emph{lattice} (i.e. finitely generated $\Z$-submodule) of rank $n$, and we can consider its \emph{covolume}, which is the volume of a unit grid square with respect to a basis (well-defined as a change of basis matrix between $\Z$-bases has $\abs{\det(M)} = 1$). Fixing a $\Z$-basis $e_1, \ldots, e_n$ of $\o_K$, this covolume is exactly the absolute determinant of the matrix $M_K$ with components $(M_K)_{ij} = \sigma_i(e_j)$. The quantity $\Delta_K \defeq \det(M_K)^2$ is the \emph{discriminant} of $K$, which plays a role in the distribution of prime ideals on $\o_K$. We thus have $\covol(\o_K) = \abs{\Delta_K}^{1/2}$. The image of an ideal $I \subseteq \o_K$ then has covolume $\covol(I) = [\o_K : I]\covol(\o_K) = N(I)\abs{\Delta_K}^{1/2}$, corresponding to the size of the quotient $\o_K / I$.
+
+% Mention why covolume is well-defined independent of basis for a Z-module
+% Describe discriminant? determinant, trace? -- Point is that covolume is in terms of descriminant, ideals have discriminant scaled by their indices
+
+Another important part of the structure of $\o_K$ is the \emph{unit group} $\o_K^*$, which we can view the unit group geometrically by embedding $K^*$ into $\R^{r + s}$. We do this by choosing a single complex embedding from each conjugate pair, and noting the value of $[\R(\sigma(z)) : \R]\log\abs{\sigma(z)}$ is the same under $\sigma \leftrightarrow \ol\sigma$, we can consider its image under the map
 \begin{align*}
     \Log : K^* &\to \R^{r + s} \\
     z &\mapsto ([\R(\sigma(z)) : \R]\log\abs{\sigma(z)})_{\sigma}
 \end{align*}
-Under this map, the image of $\o_K^*$ is a lattice in the ``trace-zero hyperplane''
+which is the logarithm taken pointwise to the image of $z$ under our previous embedding, with identical coordinates removed). Under this map, the image of $\o_K^*$ is a rank $(r + s - 1)$ lattice in the \emph{trace-zero hyperplane}
 $$
     \R_0^{r + s} \defeq \set{(x_1, \ldots, x_{r + s}) \ \bigg| \ \sum_{i = 1}^{r + s}x_i = 0}
 $$
 % Unit group $\o_K^*$, Dirichlet's unit theorem (roots of unity denoted $\mu_K$ of cardinality $\omega_K$), $\Log$, trace zero hyperplane and regulator (volume induced by taking measure corresponding to a coordinate projection); volume
+and with respect to a basis $x_1, \ldots, x_{r + s - 1}$ for the image of $\o_K^*$, we can consider the volume of a $(r + s - 1)$-dimensional ``unit grid square'' (of the form $\set{a_1x_1 + \ldots + a_{r + s - 1}x_{r + s - 1} \mid 0 \leq a_i < 1}$). We do this by taking the measure corresponding to any coordinate projection $\pi : \R^{r + s} \twoheadrightarrow \R^{r + s - 1}$ by leaving out a single coordinate. This volume is independent of projection as the projection leaving out the $i^{\text{th}}$ coordinate corresponds to the shear on $\R^{r + s}$ sending $x_i \mapsto x_1 + \ldots + x_n$ and fixing the other coordinates. This volume measures the density of the units in $\o_K$, and we define this to be the \emph{regulator} $R_K$ of $K$.
+% Talk about projection \R^{r + s} \twoheadrightarrow \R^{r + s - 1} and inducing volume off this (well-definedness?)
+% Well-defined as projection restricted to trace zero hyperplane is a shear (inverse of change of basis sending x_i \mapsto x_1 + ... + x_n)
+% This volume is independent of the basis chosen as a change of basis matrix $M$ between $\Z$-bases has $\abs{\det(M)} = 1$, and we 
 
-We also have a structure result for the unit group, which states that $\o_K^* = \mu_K \times U$, where $\mu_K$ is the group of roots of unity in $K$ \textbf{(whose size we denote $\omega_K$)}, and $U$ is a free $\Z$-module of rank $r + s - 1$.
+The image of $\o_K^*$ under the $\Log$ map is a $(r + s - 1)$-dimensional lattice, and its restriction to $\Log|_{\o_K^*}$ has kernel $\mu_K$ \textbf{[[Reference]]}. This gives us a structure theorem for the unit group $\o_K^*$, namely that it takes the form $\o_K^* = \mu_K \times U$ for some free $\Z$-module $U \subseteq \o_K^*$ of rank $r + s - 1$.
 
-We can consider the ideals and the units ...
+% We also have a structure result for the unit group, which states that $\o_K^* = \mu_K \times U$, where $\mu_K$ is the group of roots of unity in $K$ \textbf{(whose size we denote $\omega_K$)}, and $U$ is a free $\Z$-module of rank $r + s - 1$.
 
-``Sizes of elements''
+% We can consider the ideals and the units ...
+
+% ``Sizes of elements''
 
 % Main idea: Introduce the concepts and give intuitive / reasonable ways to think about them.
 
@@ -56,29 +74,113 @@ We can consider the ideals and the units ...
 
 % Definitions: Number field [embeddings] $K$, ring of integers $\o_K$, 
 
-field norm $N$ [in terms of embeddings]
+% field norm $N$ [in terms of embeddings]
 
 % Fractional ideals, invertible ideals (every fractional ideal is invertible), class group $\Cl(K)$, [[theorem -- class group is finite.]] class number $h$
 
 % Class group/number as a measure of the failure of unique factorisation.
 
-The Dedekind zeta function (state both formulations - norms of ideals and number of ideals of each norm)
+\section{The Dedekind zeta function}
+Having outlined the geometry and structure of a number field $K / \Q$, We can define our main object of interest, which we can view as a natural generalisation of the Riemann zeta function.
+\begin{definition}[Dedekind zeta function]
+    Let $K$ be a number field. The \emph{Dedekind zeta function $\zeta_K$} is defined (formally) as the sum
+    $$
+        \zeta_K(s) \defeq \sum_{0 \neq I \subseteq \o_K} \frac1{N(I)^s}
+    $$
+\end{definition}
+Taking $K = \Q$, we find $\zeta_\Q(s) = \zeta(s)$ as usual. Rewriting this sum over the indices $N(I) = [\o_K : I]$, we have
+$$
+    \zeta_K(s) = \sum_{m = 1}^\infty \frac{\abs{\set{I \subseteq \o_K \mid [\o_K : I] = m}}}{m^s}
+$$
+This is a series of the form $\sum_{m = 1}^\infty a_mm^{-s}$ where $a_m$ counts the number of ideals of norm $m$, and gives us an important relation between the ideals of $\o_K$ of bounded norm and the values of $\zeta_K$. Our main result is then formulated as follows.
+\begin{theorem}[The analytic class number formula]\label{acnf1}
+    Let $K$ be a number field with degree $n = r + 2s$. Then the Dedekind zeta function $\zeta_K$ is holomorphic on the half-plane $\Re(s) > 1$, and admits a meromorphic continuation to $\Re(s) > 1 - 1/n$, holomorphic everywhere except for a simple pole at $s = 1$ with residue
+    $$
+        \Res_{s = 1}\zeta_K = \frac{2^r(2\pi)^sh_KR_K}{\omega_K\sqrt{\abs{\Delta_K}}}
+    $$
+\end{theorem}
+A slightly stronger statement holds, namely that $\zeta_K$ extends to a function holomorphic everywhere in $\C \setminus \set{1}$, with a simple pole at $s = 1$ \textbf{[[Reference]]}.
 
-State the theorem
+% The Dedekind zeta function (state both formulations - norms of ideals and number of ideals of each norm)
 
-\section{Geometry}
-Geometric interpretation $K \hookrightarrow K_\R$ (and volume), discriminant (of modules), lattices, covolume of $\o_K$ and ideals
+% State the theorem
+
+% \section{Geometry}
+% Geometric interpretation $K \hookrightarrow K_\R$ (and volume), discriminant (of modules), lattices, covolume of $\o_K$ and ideals
 
 \chapter{The analytic class number formula}
+[[Mention fixing notation?]]
+
+We begin by establishing a connection between the asymptotic distribution of ideals of bounded norm and the convergence and poles of the Dedekind zeta function, and then estimate the number of ideals with bounded norm by point-counting.
+
 \section{Series and continuations} % COME UP WITH BETTER NAMES
-Lemma 1: $(a_i)$ with $\sum a_i = O(t^\sigma)$
+Before considering a general series of the form $\sum_{m = 1}^\infty a_mm^{-s}$ first establish these convergence results for the Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty m^{-s}$, which will correspond to the principal term in our asymptotic formula for the ideals of bounded norm, and the pole of $\zeta_K$ at $s = 1$.
+\begin{lemma}
+    The Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty \frac1{m^s}$ defines a holomorphic function for $\Re(s) > 1$, and admits a meromorphic continuation to $\Re(s) > 0$ except for a pole at $s = 1$ of residue $1$.
+\end{lemma}
+\begin{proof}
+    For $\Re(s) > 1$ we have $\abs{\frac1{m^s}} = \frac1{m^{\Re(s)}}$, so the series $\sum_{m = 1}^\infty \frac1{m^s}$ converges absolutely. We note that 
+    $$
+        \zeta(s) = \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} + \sum_{m = 1}^\infty \frac{(-1)^{m + 1} + 1}{m^s} = \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} + \sum_{m = 1}^\infty \frac{2}{2^sm^s} = \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} + 2^{1 - s}\zeta(s)
+    $$
+    and so 
+    \begin{align}\label{newzeta}
+        \zeta(s) = \frac1{1 - 2^{1 - s}}\sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s}
+    \end{align}    
+    and that
+    $$
+        \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} = \sum_{m = 1}^\infty \frac{1}{(2m - 1)^s} - \sum_{m = 1}^\infty \frac{1}{(2m)^s}
+    $$
+    Applying the mean value theorem to $x^{-s}$ on $(2n - 1, 2n)$, we have $\abs{\frac{d}{dx}x^{-s}} = \abs{-sx^{-s - 1}} = \abs{s}x^{-\Re(s) - 1}$, and so
+    $$
+        \abs{\frac1{(2n - 1)^s} - \frac1{(2n)^s}} \leq \frac{\abs{s}}{(2n - 1)^{\Re(s) + 1}}
+    $$
+    and so (\ref{newzeta}) converges for $\Re(s) > 0$, $s \neq 1$. To show $\zeta(s)$ has a simple pole at $s = 1$ and compute the residue we compute $\lim_{s \to 1^+}\zeta(s)$ as a real limit. For $s > 1$ we have
+    $$
+        \frac1{s - 1} = \int_1^\infty \frac1{t^s} dt < \sum_{m = 1}^\infty \frac1{m^s} < 1 + \int_1^\infty \frac1{t^s} dt = \frac{s}{s - 1}
+    $$
+    and so multiplying by $s - 1$, we have $\Res_{s = 1}\zeta = \lim_{s \to 1^+}(s - 1)\zeta(s) = 1$, and that $(s - 1)^{-1}$ is the first term in the Laurent series expansion of $\zeta$ around $1$.
+\end{proof}
+% Lemma 1: Riemann zeta admits a meromorphic continuation to $\Re(s) > 0$, simple pole at $s = 1$ of residue 1.
 
-Lemma 1.5: Riemann zeta admits a meromorphic continuation to $\Re(s) > 0$, simple pole at $s = 1$ of residue 1.
+The previous lemma suggests the asymptotic distribution of ideals of bounded norm should scale linearly, up to some error term. The following result describes how this error term relates to the convergence of our extension of $\zeta_K$.
 
-Lemma 2: $(a_i)$ with $\sum a_i = \rho t + O(t^\sigma)$, $\sigma \in [0, 1)$.
-
-Motivation for why this is relevant
+\begin{lemma}
+    Let $(a_m)$ be a sequence of complex numbers, $\sigma \in \R$ and suppose that $\sum_{m = 1}^t a_m = O(t^\sigma)$. Then the series $\sum_{m = 1}^\infty a_mm^{-s}$ defines a holomorphic function on $\Re(s) > \sigma$.
+\end{lemma}
+\begin{proof}
+    Let $\Re(s) > \sigma$. Applying Abel's theorem \textbf{[[reference apostol]]} to $f(x) = x^{-s}$ and $A(x) = \sum_{m \leq x}a_m$ on $[1/2, x]$ and noting that $A(x) = 0$ for $x < 1$, we find
+    $$
+        \sum_{m \leq x}a_mm^{-s} = A(x)x^{-s} - (-s)\int_{1/2}^x \frac{A(t)}{t^{s + 1}}dt = A(x)x^{-s} + s\int_1^x\frac{A(t)}{t^{s + 1}}dt
+    $$
+    We note that $\abs{A(x)x^{-s}} = O(x^{\sigma - \Re(s)})$ and $\abs{A(t)/t^{s + 1}} = O(t^{\sigma - \Re(s) - 1})$ and $\sigma - \Re(s) - 1 < -1$. Thus the right-hand side converges as $x \to \infty$, and so $\sum_{m = 1}^t a_mm^{-s}$ defines a holomorphic function on $\Re(s) > \sigma$.
+\end{proof}
+Putting these two together, we have
+\begin{lemma}\label{growthrate}
+    Let $(a_m)$ be a sequence of complex numbers such that
+    $$
+        \sum_{m = 1}^t a_m = \rho t + O(t^\sigma)
+    $$
+    for some $\sigma \in [0, 1)$. Then $\sum_{m = 1}^\infty a_mm^{-s}$ defines a holomorphic function on $\Re(s) > 1$, with a meromorphic extension to $\Re(s) > \sigma$ holomorphic everywhere except for a simple pole at $s = 1$ of residue $\rho$.
+\end{lemma}
+\begin{proof}
+    Letting $b_m = a_m - \rho$ be the error term, with $\sum_{m = 1}^t b_m = O(t^\sigma)$. Then
+    $$
+        \sum_{m = 1}^\infty a_mm^{-s} = \rho\sum_{m = 1}^\infty m^{-s} + \sum_{m = 1}^\infty b_mm^{-s} = \rho\zeta(s) + \sum_{m = 1}^\infty b_mm^{-s}
+    $$
+    The first term is holomorphic on $\Re(s) > 1$ with extension to $\Re(s) > 0$ holomorphic everywhere except for a pole at $s = 1$, and the second term is holomorphic everywhere on $\Re(s) > \sigma$. Thus as $0 \leq \sigma < 1$, their sum admits a meromorphic extension to $\Re(s) > \sigma$ with a simple pole at $s = 1$ of residue $\rho \cdot 1 + 0 = \rho$.
+\end{proof}
+% Lemma 3: $(a_i)$ with $\sum a_i = \rho t + O(t^\sigma)$, $\sigma \in [0, 1)$.
+% Motivation for why this is relevant
 \section{The distribution of ideals}
+Comparing Theorem \ref{acnf1} to Lemma \ref{growthrate}, we may expect that the number of ideals of norm at most $t$ is asymptotically
+$$
+    \brac{\frac{2^r(2\pi)^sh_KR_K}{\omega_K\sqrt{\abs{\Delta_K}}}}t + O(t^{1 - 1/n})
+$$
+and to show this, we 
+
+Ideal result to prove
+
 Motivate by arguing for sufficiently nice boundary
 \subsection{Lipschitz parametrisability}
 Idea: count points in image of $\o_K$ under $\Log$, but need nice boundary
@@ -88,4 +190,16 @@ Lemma + corollary on computing with $(n - 1)$-Lipschitz parametrisable boundary.
 \subsection{Integral ideals of bounded norm}
 The long computation
 
+% Fudge things?
+
+Theorem -- integral ideals of bounded norm
+
+Corollary -- ACNF
+
+
+REFERENCES - ANT stevenhagen
+
+borevich shafarevich
+
+andrew sutherland
 \end{document}
