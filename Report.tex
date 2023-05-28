@@ -4,63 +4,63 @@
 \begin{document}
 \maketitle
 \abstract
-We give an outline of some algebraic number theory and describe the proof that the Dedekind zeta function has a meromorphic continuation to $\Re(s) > 1 - 1/n$, except for a simple pole at $s = 1$, whose residue consists of many fundamental invariants of the number field, and is referred to the analytic class number formula.
+% We give an outline of some algebraic number theory and describe the proof that the Dedekind zeta function has a meromorphic continuation to $\Re(s) > 1 - 1/n$, except for a simple pole at $s = 1$, whose residue consists of many fundamental invariants of the number field, and is referred to the analytic class number formula.
 
-Outline ACNF, show how distribution of ideals relates
-\np
+We give an exposition of the analytic class number formula, usually stated as a theorem on the convergence, poles and residues of the Dedekind zeta function of a number field $K$. We describe how this relates to the asymptotic distribution of ideals of bounded index, and by viewing the number field geometrically, we deduce an asymptotic formula for the ideals of bounded index.
+
+% Outline ACNF, show how distribution of ideals relates
 \tableofcontents
 \chapter{Background} % Set up notation
-Let $K / \Q$ be a finite extension of degree $n$, which we will refer to as a \emph{number field}. Then $K$ is of the form $\Q(\a)$ for some $\a \in \ol\Q$ by separability, and we can consider the embeddings $K \hookrightarrow \C$. These correspond to sending $\a$ to a root of its minimal polynomial in $\C$, and so come in conjugate pairs. Throughout this report, we write $r$ for the number of embeddings with image in $\R$, and $s$ for the number of conjugate pairs of complex embeddings, so that $n = r + 2s$.
-
-To each such number field, we have a \emph{ring of integers} $\o_K$ which plays a similar role to $\Z \subseteq \Q$, defined as the set (subring \textbf{[[reference??]]}) of $x \in K$ which are roots of monic integer polynomials, and this is a free $\Z$-module of rank $n$. The ring of integers naturally corresponds to the number field $K$ in that it is the maximal finitely-generated $\Z$-submodule of $K$, and the minimal subring of $K$ admitting \emph{unique prime ideal factorisation} (i.e. where every ideal splits as a product of prime ideals). \textbf{[[mention $\Frac(\o_K) = K$??]]} 
-
-In general, $\o_K$ does not admit unique prime factorisation, and we can quantify the failure of unique prime ideal factorisation in $\o_K$ by considering what proportion of ideals are principal (i.e. correspond to elements of $\o_K$). We do this by constructing a group of ideals under the usual multiplication. 
-
-Noting that the $\o_K$-submodules of $\o_K$ are exactly the ideals $I \subseteq \o_K$, we define a \emph{fractional ideal $I$} to be a non-zero $\o_K$-submodule of $K$ with $xI \subseteq \o_K$ for some $x \in \o_K$, so that the fractional ideals are of the form $\frac1xI$ for some $x \in \o_K$, $0 \neq I \subseteq \o_K$. In the case of $\o_K \subseteq K$, every fractional ideal $I$ is \emph{invertible} under ideal multiplication \textbf{[[Reference??]]}, i.e. has a fractional ideal $J$ with $IJ = JI = \o_K$, so the set of fractional ideals forms an abelian group $\I(\o_K)$. The principal fractional ideals $\P(\o_K) \defeq \set{\a\o_K \mid \a \in K^*}$ are a subgroup of $\I(\o_K)$, and the failure of unique factorisation is described by the size of the quotient $\Cl(K) \defeq \I(\o_K) / \P(\o_K)$, which we refer to as the \emph{class group of $K$}. A large structure result states that the class group is finite for any number field $K$, and we refer to its size $h_K$ as the \emph{class number of $K$}.
-
-The number field $K$ has various notions of size for ideals and elements: for elements we have the \emph{field norm}
-\begin{align*}
-    N_{K / \Q} : K &\to \Q \\
-    \b &\mapsto \prod_{\sigma : K \to \C}\sigma(\b)
-\end{align*}
-This is well-defined since for any $\b$, each $\sigma : \Q(\b) \to \C$ has exactly $[K : \Q(\b)]$ extensions, and so
-$$
-    N_{K / \Q}(\b) = \brac{\prod_{\sigma : \Q(\b) \to \C}\sigma(\b)}^{[K : \Q(\b)]}
-$$
-and this is rational as the product is $(-1)^{[\Q(\b) : \Q]}$ multiplied by the constant term of the minimal polynomial of $\b$ over $\Q$. We also have the \emph{ideal norm} for ideals $0 \neq I \subseteq \o_K$, defined by 
-$$
-    N(I) = [\o_K : I]
-$$
-which is multiplicative, in essence due to the fact that $\o_K$ admits unique prime ideal factorisation.
-
+We assume that the reader is familiar with some of the fundamental objects in algebraic number theory \hyperlink{stevenhagen}{[1]}, namely \emph{number fields} $K / \Q$, their associated \emph{rings of integers} $\o_K \subseteq K$, \emph{class groups} $\Cl(K)$ and \emph{unit groups} $\o_K^*$. We also assume the reader is familiar with the discriminant $\Delta_K$ of a number field $K$, and the field norm $N$ and ideal norms $\en$ and their compatibility (that is that $\en((\a)) = \abs{N(\a)}$ for $\a \neq 0$). We have the following structure result for the class group $\Cl(K)$:
+\begin{theorem}[Finiteness of the class group]
+    Let $K$ be a number field. Then $\Cl(K)$ is a finite abelian group.
+\end{theorem}
+The \emph{class number} $h_K$ of $K$ is then defined as the size of $\Cl(K)$, and can be viewed as a measure of the failure of unique factorisation in $\o_K$.
 % This subring is natural in the sense that it admits unique \emph{prime ideal factorisation}, that is, every ideal splits uniquely the product of prime ideals (under the usual ideal product where $IJ = (i_kj_l)_{k, l}$ where $I = (i_k)_k$ and $J = (j_l)_l$).
 
 % which is dual to the ideal group in the sense that for non-zero principal ideals, $(\a) = (\a')$ if and only if $\a/\a' \in \o_K^*$
-We can view the number field geometrically through the embeddings $K \to \C$, by embedding $K$ into the $n$-dimensional $\R$-vector space $K_\R \defeq \set{(z_\sigma)_{\sigma} \in \prod_{\sigma : K \to \C}\C \mid z_{\ol\sigma} = \ol{z}_\sigma}$ by $x \mapsto (\sigma(x))_{\sigma}$. We identify $K_\R$ with $\R^r \times \C^s$ by choosing one embedding from each conjugate pair: writing the embeddings as $\sigma_1, \ldots, \sigma_r, \sigma_{r + 1}, \ol{\sigma_{r + 1}}, \ldots, \sigma_{r + s}, \ol{\sigma_{r + s}}$, our identification is exactly $(z_\sigma)_\sigma \leftrightarrow (z_{\sigma_i})_{i = 1}^{r + s}$. Volumes in $K_\R$ are induced by the standard inner product on $\prod_{\sigma : K \to \C}\C \mid z_{\ol\sigma} = \C^n$, which yields the usual volume in the components corresponding to real embeddings $K \to \R$, but gives twice the volume in components corresponding to conjugate pairs: writing $z_j = x_j + y_ji$ for $j = 1, 2$, the inner product in these components is given by $\lrangle{(z_1, \ol{z_1}), (z_2, \ol{z_2})} = z_1\ol{z_2} + \ol{z_1}z_2 = 2\Re(z_1\ol{z_2}) = 2(x_1y_1 + x_2y_2)$.
+We can view the number field geometrically through the embeddings $K \to \C$ (determined by the images of $\a$ for $K = \Q(\a)$), by embedding $K$ into the $n$-dimensional $\R$-vector space 
+$$
+    K_\R \defeq \set{(z_\sigma)_{\sigma} \in \prod_{\sigma : K \to \C}\C \mid z_{\ol\sigma} = \ol{z}_\sigma}
+$$
+by $\iota : x \mapsto (\sigma(x))_{\sigma}$, and we have a corresponding group of units $K_\R^*$ under pointwise multiplication. We identify $K_\R$ with $\R^r \times \C^s$ (and thus $K_\R^*$ with $(\R^*)^r \times (\C^*)^s$) by choosing one embedding from each conjugate pair: writing the embeddings as $\sigma_1, \ldots, \sigma_r, \sigma_{r + 1}, \ol{\sigma_{r + 1}}, \ldots, \sigma_{r + s}, \ol{\sigma_{r + s}}$, our identification is exactly $(z_\sigma)_\sigma \leftrightarrow (z_{\sigma_i})_{i = 1}^{r + s}$. This also yields a \hyperlink{geomnorm}{\emph{geometric norm}} on $K_\R^*$ analogous to that of the field norm, by $\enn((z_\sigma)_{\sigma : K \to \C}) = \prod_{\sigma : K \to \C}\abs{z_\sigma}$, and this is compatible with the field norm by $\enn(\iota(x)) = \abs{N(x)}$.
+
+The volumes in $K_\R$ are induced by the standard inner product on $\prod_{\sigma : K \to \C}\C = \C^n$, which yields the usual volume in the components corresponding to real embeddings $K \to \R$, but gives twice the volume in components corresponding to conjugate pairs: writing $z_j = x_j + y_ji$ for $j = 1, 2$, the inner product in these components is given by $\lrangle{(z_1, \ol{z_1}), (z_2, \ol{z_2})} = z_1\ol{z_2} + \ol{z_1}z_2 = 2\Re(z_1\ol{z_2}) = 2(x_1y_1 + x_2y_2)$.
 
 % IMPORTANT - TALK ABOUT VOLUMES BEING FUNKY
 
-Under this embedding, the image of $\o_K$ is a \emph{lattice} (i.e. finitely generated $\Z$-submodule) of rank $n$, and we can consider its \emph{covolume}, which is the volume of a unit grid square with respect to a basis (well-defined as a change of basis matrix between $\Z$-bases has $\abs{\det(M)} = 1$). Fixing a $\Z$-basis $e_1, \ldots, e_n$ of $\o_K$, this covolume is exactly the absolute determinant of the matrix $M_K$ with components $(M_K)_{ij} = \sigma_i(e_j)$. The quantity $\Delta_K \defeq \det(M_K)^2$ is the \emph{discriminant} of $K$, which plays a role in the distribution of prime ideals on $\o_K$. We thus have $\covol(\o_K) = \abs{\Delta_K}^{1/2}$. The image of an ideal $I \subseteq \o_K$ then has covolume $\covol(I) = [\o_K : I]\covol(\o_K) = N(I)\abs{\Delta_K}^{1/2}$, corresponding to the size of the quotient $\o_K / I$.
+Under this embedding, the image of $\o_K$ is a \emph{lattice} (i.e. finitely generated $\Z$-submodule) of rank $n$, and we can consider its \emph{covolume}, which is the volume of a \emph{fundamental parallelepiped} 
+$$
+    \set{\sum_{j = 1}^na_je_j \mid 0 \leq a_j < 1}
+$$
+with respect to a basis $\set{e_j}_{j = 1}^n$, well-defined as $\dim_\Z(\iota(\o_K)) = \dim_\R(K_\R)$, and as a change of basis matrix between $\Z$-bases has $\abs{\det(M)} = 1$. Fixing a $\Z$-basis $e_1, \ldots, e_n$ of $\o_K$, this covolume is exactly the absolute determinant of the matrix $M_K$ with components $(M_K)_{ij} = \sigma_i(e_j)$, which is $\abs{\Delta_K}^{1/2}$. The image of an ideal $I \subseteq \o_K$ is then $\covol(I) = [\o_K : I]\covol(\o_K)$, that is, the covolume of $\o_K$ scaled by the index or ideal norm $N(I) = [\o_K : I]$.
+
+% Finiteness of class groups thm
 
 % Mention why covolume is well-defined independent of basis for a Z-module
 % Describe discriminant? determinant, trace? -- Point is that covolume is in terms of descriminant, ideals have discriminant scaled by their indices
 
-Another important part of the structure of $\o_K$ is the \emph{unit group} $\o_K^*$, which we can view the unit group geometrically by embedding $K^*$ into $\R^{r + s}$. We do this by choosing a single complex embedding from each conjugate pair, and noting the value of $[\R(\sigma(z)) : \R]\log\abs{\sigma(z)}$ is the same under $\sigma \leftrightarrow \ol\sigma$, we can consider its image under the map
+We can also view the unit group geometrically by embedding $K^*$ into $K_\R^* \cong (\R^*)^r \times (\C^*)^s$. We do this by choosing a single complex embedding from each conjugate pair and mapping $x \mapsto (\sigma(x))_{\sigma}$. We also have the logarithm map which sends each coordinate in $K_\R^*$ to its absolute logarithm, under identification with $(\R^*)^r \times (\C^*)^s$
 \begin{align*}
-    \Log : K^* &\to \R^{r + s} \\
-    z &\mapsto ([\R(\sigma(z)) : \R]\log\abs{\sigma(z)})_{\sigma}
+    \Log : K_\R^* &\to \R^{r + s} \\
+    (x_1, \ldots, x_r, z_1, \ldots, z_s) &\mapsto (\log\abs{x_1}, \ldots, \log\abs{x_r}, 2\log{\abs{z_1}}, \ldots, 2\log{\abs{z_s}})
 \end{align*}
-which is the logarithm taken pointwise to the image of $z$ under our previous embedding, with identical coordinates removed). Under this map, the image of $\o_K^*$ is a rank $(r + s - 1)$ lattice in the \emph{trace-zero hyperplane}
+where the factors of 2 correspond to how $K_\R$ is embedded in $\C^n$. 
+% \emph{This is just the logarithm taken pointwise to the image of $z$ under our previous embedding, doubled in the complex components and with identical coordinates removed.}
+Under this map, the image of $\o_K^*$ is a rank $(r + s - 1)$ lattice in the \emph{trace-zero hyperplane}
 $$
     \R_0^{r + s} \defeq \set{(x_1, \ldots, x_{r + s}) \ \bigg| \ \sum_{i = 1}^{r + s}x_i = 0}
 $$
 % Unit group $\o_K^*$, Dirichlet's unit theorem (roots of unity denoted $\mu_K$ of cardinality $\omega_K$), $\Log$, trace zero hyperplane and regulator (volume induced by taking measure corresponding to a coordinate projection); volume
-and with respect to a basis $x_1, \ldots, x_{r + s - 1}$ for the image of $\o_K^*$, we can consider the volume of a $(r + s - 1)$-dimensional ``unit grid square'' (of the form $\set{a_1x_1 + \ldots + a_{r + s - 1}x_{r + s - 1} \mid 0 \leq a_i < 1}$). We do this by taking the measure corresponding to any coordinate projection $\pi : \R^{r + s} \twoheadrightarrow \R^{r + s - 1}$ by leaving out a single coordinate. This volume is independent of projection as the projection leaving out the $i^{\text{th}}$ coordinate corresponds to the shear on $\R^{r + s}$ sending $x_i \mapsto x_1 + \ldots + x_n$ and fixing the other coordinates. This volume measures the density of the units in $\o_K$, and we define this to be the \emph{regulator} $R_K$ of $K$.
+and with respect to a basis $x_1, \ldots, x_{r + s - 1}$ for the image of $\o_K^*$, we can consider the volume of a $(r + s - 1)$-dimensional ``unit grid square'' (of the form $\set{a_1x_1 + \ldots + a_{r + s - 1}x_{r + s - 1} \mid 0 \leq a_i < 1}$). We do this by taking the measure corresponding to any coordinate projection $\pi : \R^{r + s} \twoheadrightarrow \R^{r + s - 1}$ by leaving out a single coordinate. This volume is independent of projection as the projection leaving out the $i^{\text{th}}$ coordinate corresponds to the inverse of the shear on $\R^{r + s}$ sending $x_i \mapsto x_1 + \ldots + x_n$ and fixing the other coordinates, which has determinant $1$. This volume intuitively measures the density of the units in $\o_K$, and we define this to be the \emph{regulator} $R_K$ of $K$. We also have the following structure theorem for the unit group $\o_K^*$, based on the fact that the $\Log$ map sends $\o_K^*$ to a rank $(r + s - 1)$ lattice in $\R_0^{r + s}$.
+\begin{theorem}[Dirichlet's unit theorem]\label{dirunit}
+    Let $K$ be a number field, and $\mu_K$ be the set of roots of unity in $K$. Then $\o_K^* \cong \mu_K \times \Z^{r + s - 1}$.
+\end{theorem}
+That is, there is a free $\Z$-submodule $U$ of $\o_K^*$ of rank $(r + s - 1)$ so that every $u \in \o_K^*$ is of the form $u = \omega u'$ for $\omega \in \mu_K$ and $u' \in U$.
 % Talk about projection \R^{r + s} \twoheadrightarrow \R^{r + s - 1} and inducing volume off this (well-definedness?)
 % Well-defined as projection restricted to trace zero hyperplane is a shear (inverse of change of basis sending x_i \mapsto x_1 + ... + x_n)
 % This volume is independent of the basis chosen as a change of basis matrix $M$ between $\Z$-bases has $\abs{\det(M)} = 1$, and we 
-
-The image of $\o_K^*$ under the $\Log$ map is a $(r + s - 1)$-dimensional lattice, and its restriction to $\Log|_{\o_K^*}$ has kernel $\mu_K$ \textbf{[[Reference]]}. This gives us a structure theorem for the unit group $\o_K^*$, namely that it takes the form $\o_K^* = \mu_K \times U$ for some free $\Z$-module $U \subseteq \o_K^*$ of rank $r + s - 1$.
+% Dirichlet's unit thm
 
 % We also have a structure result for the unit group, which states that $\o_K^* = \mu_K \times U$, where $\mu_K$ is the group of roots of unity in $K$ \textbf{(whose size we denote $\omega_K$)}, and $U$ is a free $\Z$-module of rank $r + s - 1$.
 
@@ -85,21 +85,25 @@ Having outlined the geometry and structure of a number field $K / \Q$, We can de
 \begin{definition}[Dedekind zeta function]
     Let $K$ be a number field. The \emph{Dedekind zeta function $\zeta_K$} is defined (formally) as the sum
     $$
-        \zeta_K(s) \defeq \sum_{0 \neq I \subseteq \o_K} \frac1{N(I)^s}
+        \zeta_K(s) \defeq \sum_{0 \neq I \subseteq \o_K} \frac1{\en(I)^s}
     $$
 \end{definition}
-Taking $K = \Q$, we find $\zeta_\Q(s) = \zeta(s)$ as usual. Rewriting this sum over the indices $N(I) = [\o_K : I]$, we have
-$$
-    \zeta_K(s) = \sum_{m = 1}^\infty \frac{\abs{\set{I \subseteq \o_K \mid [\o_K : I] = m}}}{m^s}
-$$
-This is a series of the form $\sum_{m = 1}^\infty a_mm^{-s}$ where $a_m$ counts the number of ideals of norm $m$, and gives us an important relation between the ideals of $\o_K$ of bounded norm and the values of $\zeta_K$. Our main result is then formulated as follows.
+Taking $K = \Q$, we find $\zeta_\Q(s) = \zeta(s)$ as usual. Our main result is then formulated as follows.
 \begin{theorem}[The analytic class number formula]\label{acnf1}
     Let $K$ be a number field with degree $n = r + 2s$. Then the Dedekind zeta function $\zeta_K$ is holomorphic on the half-plane $\Re(s) > 1$, and admits a meromorphic continuation to $\Re(s) > 1 - 1/n$, holomorphic everywhere except for a simple pole at $s = 1$ with residue
     $$
-        \Res_{s = 1}\zeta_K = \frac{2^r(2\pi)^sh_KR_K}{\omega_K\sqrt{\abs{\Delta_K}}}
+        \Res_{s = 1}\zeta_K = \frac{2^r(2\pi)^sh_KR_K}{\omega_K\abs{\Delta_K}^{1/2}}
     $$
 \end{theorem}
-A slightly stronger statement holds, namely that $\zeta_K$ extends to a function holomorphic everywhere in $\C \setminus \set{1}$, with a simple pole at $s = 1$ \textbf{[[Reference]]}.
+The statement of this theorem and formula may seem slightly out of the blue, though we can heuristically reason that this formula makes sense as follows. We will show soon that if $\sum_{m = 1}^t a_m = \rho t + O(t^\sigma)$ for $0 \leq \sigma < 1$, then the associated series $\sum a_mm^{-s}$ converges on $\Re(s) > 1$, and admits a continuation to $\Re(s) > \sigma$ holomorphic everywhere except for a simple pole at $1$ of residue $\rho$, corresponding to the behaviour of the Riemann zeta function. Rewriting the sum $\zeta_K$ over the indices $\en(I) = [\o_K : I]$, we have
+\begin{align}\label{coeffs}
+    \zeta_K(s) = \sum_{m = 1}^\infty \frac{\abs{\set{I \subseteq \o_K \mid [\o_K : I] = m}}}{m^s}
+\end{align}
+This is a series of the form $\sum_{m = 1}^\infty a_mm^{-s}$ where $a_m$ is exactly the number of ideals of norm $m$. We have a bijection between principal ideals of norm at most $t$ and $\set{\a \in \o_K \setminus \set{0} \mid \abs{N(\a)} \leq t} / \o_K^*$, and intuitively we should be able to approximate the number of points of a lattice $\Lambda$ (such as $\o_K^* \subseteq \R_0^{r + s}$) in the set $tS$ as $t \to \infty$ by $\abs{tS \cap \Lambda} = \frac{\mu(S)}{\covol(\Lambda)}t^n + O(t^{n - 1})$, where the $O(t^{n - 1})$ error term represents points near the boundary of $tS$. 
+
+The number of principal ideals of norm at most 1 should then be the size of $S_1 \cap \o_K$ where $S_1$ is a reasonably shaped set so that every $x \in K_\R^*$ of norm $\enn(x) \leq 1$ can be written uniquely as a product $x_1x_2$ for $x_1 \in S_1$, $x_2 \in \o_K^*$. Since scaling uniformly by $t^{1/n}$ scales $n$-dimensional volume by $t$, the number of principal ideals of norm at most $t$ should then be counted by a set of the form $t^{1/n} S \cap \Lambda$. We thus may expect the number of ideals of norm at most $t$ to be asymptotically $\frac{\mu(S)}{\covol(\Lambda)}t + O(t^{1 - 1/n})$, which would establish the half-plane of convergence, and suggests the $\abs{\Delta_K}^{1/2}$ factor in the denominator of the residue corresponds exactly to $\covol(\o_K)$.
+
+The set $S_1 \subseteq K_\R^*$ can be viewed as a multiplicative complement of $\o_K^*$ in the ``closed unit ball'' $\B = \set{x \in K_\R^* \mid \enn(x) \leq 1}$. The factor of $R_K/\omega_K$ [[density of units in trace zero hyperplane under $\Log$ map, $\omega_K$ from fibres of $\Log$ map]] The set $\B$ has $2^r$ connected components ($2$ for each $\R^*  = \R^- \sqcup \R^+$ component), and [2 pi from polar decomposition].
 
 % The Dedekind zeta function (state both formulations - norms of ideals and number of ideals of each norm)
 
@@ -109,9 +113,7 @@ A slightly stronger statement holds, namely that $\zeta_K$ extends to a function
 % Geometric interpretation $K \hookrightarrow K_\R$ (and volume), discriminant (of modules), lattices, covolume of $\o_K$ and ideals
 
 \chapter{The analytic class number formula}
-[[Mention fixing notation?]]
-
-We begin by establishing a connection between the asymptotic distribution of ideals of bounded norm and the convergence and poles of the Dedekind zeta function, and then estimate the number of ideals with bounded norm by point-counting.
+We begin by establishing a connection between the asymptotic distribution of ideals of bounded norm and the convergence and poles of the Dedekind zeta function, and then estimate the number of ideals with bounded norm by estimating using point-counting.
 
 \section{Series and continuations} % COME UP WITH BETTER NAMES
 Before considering a general series of the form $\sum_{m = 1}^\infty a_mm^{-s}$ first establish these convergence results for the Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty m^{-s}$, which will correspond to the principal term in our asymptotic formula for the ideals of bounded norm, and the pole of $\zeta_K$ at $s = 1$.
@@ -170,36 +172,179 @@ Putting these two together, we have
     $$
     The first term is holomorphic on $\Re(s) > 1$ with extension to $\Re(s) > 0$ holomorphic everywhere except for a pole at $s = 1$, and the second term is holomorphic everywhere on $\Re(s) > \sigma$. Thus as $0 \leq \sigma < 1$, their sum admits a meromorphic extension to $\Re(s) > \sigma$ with a simple pole at $s = 1$ of residue $\rho \cdot 1 + 0 = \rho$.
 \end{proof}
+The above lemma applies in particular to when the coefficients $a_m$ are counting the number of objects with some numeric property (in our case the ideal norm) equal to $m$, since we can use counting arguments to reason about the behaviour of the corresponding series, and vice versa.
 % Lemma 3: $(a_i)$ with $\sum a_i = \rho t + O(t^\sigma)$, $\sigma \in [0, 1)$.
 % Motivation for why this is relevant
 \section{The distribution of ideals}
-Comparing Theorem \ref{acnf1} to Lemma \ref{growthrate}, we may expect that the number of ideals of norm at most $t$ is asymptotically
-$$
-    \brac{\frac{2^r(2\pi)^sh_KR_K}{\omega_K\sqrt{\abs{\Delta_K}}}}t + O(t^{1 - 1/n})
-$$
-and to show this, we 
+Throughout this section, we take $K$ to be a fixed number field with $r$ real embeddings and $2s$ complex embeddings, with degree $n$
 
-Ideal result to prove
-
-Motivate by arguing for sufficiently nice boundary
+To reason about the convergence and residues of $\zeta_K$, we use Lemma \ref{growthrate} and reinterpret principal ideals as points in some reasonable subset of $K_\R^*$. Comparing Theorem \ref{acnf1} to Lemma \ref{growthrate}, we may expect that the number of ideals of norm at most $t$ is asymptotically
+$$
+    \brac{\frac{2^r(2\pi)^sh_KR_K}{\omega_K\sqrt{\abs{\Delta_K}}}}t + O\brac{t^{1 - 1/n}}
+$$
+To show this, we first count the number of principal ideals up to a certain bound, and then adapt our argument slightly for ideals in an arbitrary ideal class. We do this by choosing a set of reasonable shape $S \subseteq K_\R^*$ and the lattice $\o_K^* \subseteq K_\R^*$ so that for $t \to \infty$, the number of points in $tS \cap \o_K^*$ corresponds to the number of ideals of norm at most some function of $t$.
+% We count this by showing that for a set $S \subseteq K_\R^*$ with a reasonable shape and the lattice $\o_K^* \subseteq K_\R^*$, the number of lattice points in $tS \cap \Lambda$ scales asymptotically like $\vol(S)t^n$ (where $\vol$ is some sensible notion of volume).
 \subsection{Lipschitz parametrisability}
-Idea: count points in image of $\o_K$ under $\Log$, but need nice boundary
-
-Lemma + corollary on computing with $(n - 1)$-Lipschitz parametrisable boundary.
-
+We quantify ``a reasonable shape'' for a set by saying that the boundary should be reasonable, which we take to mean that the boundary of our set should be parametrisable by finitely many Lipschitz functions from unit cubes.
+\begin{definition}[Lipschitz parametrisable]
+    A subset $B$ of a metric space $X$ is $m$-Lipschitz parametrisable if it is the union of the images of finitely many Lipschitz functions $[0, 1]^m \to B$
+\end{definition}
+For a set $S \subseteq K_\R$ with Lipschitz parametrisable boundary and a lattice $\Lambda$, we then have the following point-counting relation between the number of lattice points in the scaled sets $tS$ and the volume of $S$. Here we measure the volume of $S$ with respect to a scaled version of the Lebesgue measure on $\R^r \times \C^s \cong K_\R$, with the measure doubled in the $\C$ components, corresponding to our previous identification of $K_\R$ with a subset of $\C^n$.
+\begin{lemma}\label{ptcount}
+    Let $\Lambda \subseteq K_\R$ be a lattice, and $S \subseteq K_\R$ have $(n - 1)$-Lipschitz parametrisable boundary $\partial S$. Then 
+    $$
+        \abs{tS \cap \Lambda} = \frac{\mu(S)}{\covol(\Lambda)}t^n + O(t^{n - 1})
+    $$
+    as $t \to \infty$.
+\end{lemma}
+That is, number of lattice points in $tS$ grows like $t^n$ multiplied by the ratio of volumes $\mu(S)/\covol(\Lambda)$ as $t$ gets large. A proof of this result can be found in \hyperlink{sutherland}{[2]}
+% \begin{corollary}
+% \end{corollary}
 \subsection{Integral ideals of bounded norm}
-The long computation
+We note first that as $\o_K$ is an integral domain, $\a, \a' \in \o_K$ generate the same principal ideal if and only if $\a/\a' \in \o_K^*$, and so $\set{(\a) \subseteq \o_K \mid I \neq 0, N((\a)) \leq t}$ has the same cardinality as the set 
+$$
+    \set{\a \in K^* \cap \o_K \mid N(\a) \leq t} / \o_K^*
+$$
+where the notation $/\o_K^*$ refers to the equivalence classes under the equivalence relation $\a \sim u\a$ for some $u \in \o_K^*$. Setting $K_{\R, \leq t} \defeq \set{x \in K_\R^* \mid N(x) \leq t}$, we can write $(K_{\R, \leq t}^* \cap \o_K) / \o_K^*$ for the above set, where this intersection is taken in $K_\R^* \subseteq K_\R$ and partitioned into classes modulo $\o_K^*$. Writing $\enn$ for the \hyperlink{geomnorm}{geometric norm} on $K_\R^*$, we have $\log(\enn(x)) = \sum_{\sigma} \log\abs{x_\sigma}$, which is exactly the sum of coordinates of $\Log(x)$. The set $K_{\R, 1}^* = \set{x \in K^* \mid \enn(x) = 1}$ is then exactly the preimage of the trace-zero hyperplane $\R^{r + s}_0$, and we have a projection onto $K_{\R, 1}^*$ given by
+\begin{align*}
+    \nu : K_\R^* &\twoheadrightarrow K_{\R, 1}^* \\
+    x &\mapsto x\enn(x)^{-1/n}
+\end{align*}
+well-defined as for $r \in \R^+$ we have $\enn(rx) = \prod_{\sigma} (\abs{x_\sigma}r) = r^n\prod_{\sigma}\abs{x_\sigma} = r^n\enn(x)$ and surjective as each $x \in K_{\R, 1}^*$ maps to itself.
 
-% Fudge things?
+By Theorem \ref{dirunit} (Dirichlet's unit theorem) we have $\o_K^* = \mu_K \times U$ for some free $\Z$-module $U \subseteq \o_K^*$ of rank $r + s - 1$, and the restriction of the $\Log$ map to $U$ is injective. It is thus easier to estimate $\abs{(K_{\R, \leq t^*} \cap \o_K) / U}$, and noting that the fibres of the natural map 
+$$
+    (K_{\R, \leq t^*} \cap \o_K) / U \twoheadrightarrow (K_{\R, \leq t^*} \cap \o_K) / \o_K^*
+$$
+have size $\abs{\mu_K} = \omega_K$, we have $\abs{(K_{\R, \leq t^*} \cap \o_K) / U} = \omega_K\abs{(K_{\R, \leq t^*} \cap \o_K) / \o_K^*}$, so we can obtain an estimate for $\abs{(K_{\R, \leq t^*} \cap \o_K) / \o_K^*}$ on dividing by $\omega_K$. 
 
-Theorem -- integral ideals of bounded norm
+Fixing a fundamental domain $D$ for the lattice $\Log(U) \subseteq \R^{r + s}_0$, as $\nu$ and $\Log$ are injective on $U$ it follows that $S \defeq (\Log \circ \nu)^{-1}(R)$ is a set of unique coset representatives for $K_\R^* / U$,  and these now correspond $\omega_K$-to-1 to principal fractional ideals (up to multiplication by a root of unity). Letting $S_{\leq t} = \set{x \in S \mid \enn(x) \leq t} \subseteq K_\R$, the finite set $S_{\leq t} \cap \o_K \subseteq K_\R$ then corresponds $\omega_K$-to-1 to the principal ideals in $\o_K$ of norm at most $t$. We then have $S_{\leq t} = t^{1/n}S_{\leq 1}$, and to compute the volume of $S_{\leq t}$, we check that the set $S_{\leq 1}$ has $(n - 1)$-Lipschitz parametrisable boundary.
 
-Corollary -- ACNF
+We note the $\Log$ map has kernel given by points with each component having norm 1, explicitly $\set{\pm 1}^r \times (S^1)^s \subseteq (\R^*)^r \times (\C^*)^s \cong K_\R^*$. Thus we have a continuous group isomorphism
+\begin{align}
+    K_\R^* = (\R^*)^r \times (\C^*)^s &\to \R^{r + s} \times \set{\pm 1}^r \times (S^1)^s \nonumber \\
+    x = (x_1, \ldots, x_r, z_1, \ldots, z_s) &\mapsto \brac{\Log(x), \sign(x_1), \ldots, \sign(x_r), \frac{z_1}{\abs{z_1}}, \ldots, \frac{z_s}{\abs{z_s}}}\label{contgpiso}
+\end{align}
+Since $\R^* = \R^- \sqcup \R^+$, $S_{\leq 1}$ consists of $2^r$ connected components, corresponding to choices of signs in each component. We note each $x \in S_{\leq 1}$ is of the form $x = \enn(x)^{1/n}x'$ for $\enn(x') = 1$, $\enn(x)^{1/n} \in (0, 1]$. We then note that the componentwise absolute values of a point in $U$ are described uniquely by its image under the $\Log$ map, so each point in $S$ is described uniquely by its image in $D$ under the $\Log$ map and the arguments in each $\C$ component. 
 
+Denote by $S_{\leq 1}^a = S_{\leq 1} \cap \prod_{j = 1}^r\R^{a_j}$ the connected component corresponding to the choice of signs $a = (a_1, \ldots, a_r) \in \set{-, +}^r$. Fixing a basis $\e_1, \ldots, \e_{r + s - 1}$ for $U$ so that 
+$$
+    D = \set{\sum_{j = 1}^{r + s - 1} b_j\Log(\e_j) \mid 0 \leq b_j < 1}
+$$
+is the fundamental parallelepiped of $\set{e_j}_{j = 1}^{r + s - 1}$, we can parametrise $S_{\leq 1}^a$ in $n$ components, by taking $r + s - 1$ components in $[0, 1)$ encoding $x/\enn(x)^{1/n}$ by its $\R$-coefficients when expressed in terms of $\Log(\e_1), \ldots, \Log(\e_{r + s - 1})$, $s$ components in $[0, 1)$ encoding points in $S^1$, and 1 component for $\enn(x)^{1/n}$. These yield a continuously differentiable (in particular Lipschitz) bijection $C = [0, 1)^{n - 1} \times (0, 1] \subseteq [0, 1]^n \to S_{\leq 1}^a$: each map in the first set maps a point to its component in a basis, the second set consists of maps of the form $x \mapsto e^{2\pi i x}$, and the third is differentiable as the absolute value is differentiable away from $0$. The boundary of $C$ is then the Lipschitz parametrisable set $\partial [0, 1]^n$, and so the above bijection shows $S_{\leq 1}^a$ is parametrisable for each $a \in \set{\pm 1}^r$, and thus so is $S_{\leq 1}$.
 
-REFERENCES - ANT stevenhagen
+Applying Lemma \ref{ptcount} to $\Lambda = \o_K$, $S = S_{\leq 1}$ and with $t^{1/n}$ in place of $t$ yields
+\begin{align}
+    \abs{S_{\leq t} \cap \o_K} = \frac{\mu(S_{\leq 1})}{\covol(\o_K)}(t^{1/n})^n + O((t^{1/n})^{n - 1}) = \frac{\mu(S_{\leq 1})}{\covol(\o_K)}t + O\brac{t^{1 - 1/n}}
+\end{align}
+and so it remains to compute $\mu(S_{\leq 1})$. Writing each $x \in S_{\leq 1}$ as $x = \enn(x)^{1/n}\nu(x)$ for $\enn(x) \in (0, 1]$, under the $\Log$ map (which is the first component of (\ref{contgpiso}), $S_{\leq 1}$ is mapped by
+\begin{align*}
+    S_{\leq 1} &\to D + (-\infty, 0]\brac{\frac1n, \ldots, \frac1n, \frac2n, \ldots, \frac2n} \\
+    x = \nu(x)\enn(x)^{1/n} &\mapsto \Log(\nu(x)) + \log(\enn(x))\brac{\frac1n, \ldots, \frac1n, \frac2n, \ldots, \frac2n}
+\end{align*}
+To compute $S_{\leq 1}$ we integrate over each connected component $S_{\leq 1}^a$ for $a \in \set{-, +}^r$. We reindex each $\R^{a_i}$ component of $S_{\leq 1}^a$ by the maps
+\begin{align*}
+    \R^{a_i} &\to \R \\
+    x_i &\mapsto \log\abs{x_i} =\vcentcolon \ell_i
+\end{align*}
+or equivalently $x_i = a_ie^{\ell_i}$, and under this change of variables we have $dx_i = \abs{a_ie^{\ell_i}}d\ell_i = e^{\ell_i}d\ell_i$. For each $\C^*$ component of $S_{\leq 1}^a$ we reindex by polar coordinates (with $e^{\ell/2}$ in place of $r$) by
+\begin{align*}
+    \C^* &\to \R \times [0, 2\pi) \\
+    z_j &\mapsto (2\log\abs{z_j}, \arg(z_j)) =\vcentcolon (\ell_{r + j}, \theta_j)
+\end{align*}
+and noting that the standard measure on $\C^*$ (as a component on $K_\R^*$) is twice that of the usual measure on $\C^*$, reindexing yields $2dz_j = 2e^{\ell_{r + j}/2}d(e^{\ell_{r + j}/2})d\theta_j = e^{\ell_{r + j}}d\ell_{r + j}d\theta_j$. Overall we have
+$$
+    dx_1 \ldots dx_r dz_1 \ldots dz_s = e^{\ell_1 + \ldots + \ell_{r + s}}d\ell_1 \ldots d\ell_{r + s}d\theta_1 \ldots d\theta_s
+$$
+To simplify the exponent we change the last variable (fixing the other variables) to 
+$$
+    t = \ell_1 + \ldots + \ell_{r + s} = \log\abs{x_1} + \ldots + \log\abs{x_r} + 2\log\abs{z_1} + \ldots 2\log\abs{z_s} = \log(N(x))
+$$
+We then have $dt = d\ell_{r + s}$, and letting $\pi : \R^{r + s} \twoheadrightarrow \R^{r + s - 1}$ be the projection onto the first $r + s - 1$ components and letting $\ell = (\ell_1, \ldots, \ell_{r + s - 1})$ and $d\ell = d\ell_1 \ldots d\ell_{r + s - 1}$, the $\Log$ map ultimately maps $S_{\leq 1}^a$ to $\pi(D) \times (-\infty, 0]$ under this reindexing, so we can write our change of variables as
+\begin{align*}
+    S_{\leq 1}^a &\to \pi(D) \times (-\infty, 0] \times [0, 2\pi)^s \\
+    x = (x_1, \ldots, x_r, z_1, \ldots, z_s) &\mapsto (\pi(\Log(x)), \log(N(x)), \arg(z_1), \ldots, \arg(z_s)) =\vcentcolon (\ell, t, \theta_1, \ldots, \theta_s) \\
+    dx_1 \ldots dx_r dz_1 \ldots dz_s &= e^t d\ell dt d\theta_1 \ldots d\theta_s
+\end{align*}
+Noting then that the regulator $R_K$ is exactly the volume (or measure) of $\pi(D)$, we then have
+\begin{align*}
+    \mu(S_{\leq 1}^a) &= \int_{S_{\leq 1}^a} dx_1 \ldots dx_r dz_1 \ldots dz_r \\
+    &= \brac{\int_{\pi(D)} d\ell}\brac{\int_{-\infty}^0 e^t dt}\brac{\int_0^{2\pi} d\theta_1} \ldots \brac{\int_0^{2\pi} d\theta_s} \\
+    &= R_K(2\pi)^s
+\end{align*}
+Since $S_{\leq 1} = \bigsqcup_{a \in \set{-, +}^r} S_{\leq 1}^a$ we then have
+$$
+    \mu(S_{\leq 1}) = \sum_{a \in \set{-, +}^r}\mu(S_{\leq 1}^a) = 2^r(2\pi)^sR_K
+$$
+Dividing by $\omega_K$ to account for the $\omega_K$-to-1 map $S_{\leq t} \cap \o_K \twoheadrightarrow (K_{\R, \leq t}^* \cap \o_K) / \o_K$, we find that
+\begin{align}\label{prin}
+    \abs{\set{(\a) \subseteq \o_K \mid N(\a) \leq t}} = \frac{2^r(2\pi)^sR_K}{\omega_K\covol(\o_K)} + O\brac{t^{1 - 1/n}}
+\end{align}
+For an arbitrary ideal class $\gamma \in \Cl(K)$, we aim to show  note first that (\ref{prin}) generalises to any non-zero ideal $I \subseteq \o_K$ by replacing $I$ with $o_K$ and noting that $S_{\leq 1} \cap I$ counts the number of principal ideals $(\a) \subseteq I$, yielding
+\begin{align}
+    \abs{\set{(\a) \subseteq I \mid N(I) \leq t}} = \brac{\frac{2^r(2\pi)^sR_K}{\omega_K\covol(I)}}t + O(t^{1 - 1/n})
+\end{align}
+Let $I_\gamma \subseteq \o_K$ be a representative for $\gamma$. Then for the inverse class $[I_\gamma^{-1}]$, we have a bijection given by multiplying by $I_\gamma$:
+\begin{align*}
+    \set{I \in [I_{\gamma}^{-1}] \mid I \subseteq \o_K, N(I) \leq t} &\xrightarrow{I \mapsto II_\gamma} \set{(\a) \subseteq I_\gamma \mid N(\a) \leq tN(I_\gamma)}
+\end{align*}
+and so taking cardinalities, we find
+\begin{align*}
+    \abs{\set{I \in [I_{\gamma}^{-1}] \mid I \subseteq \o_K, N(I) \leq t}} &= \brac{\frac{2^r(2\pi)^s R_K}{\omega_K \covol(I_\gamma)}}tN(I_\gamma) + O\brac{t^{1 - 1/n}} \\
+    &= \brac{\frac{2^r(2\pi)^s R_K}{\omega_K \covol(\o_K)N(I_\gamma)}}tN(I_\gamma) + O\brac{t^{1 - 1/n}} \\
+    &= \brac{\frac{2^r(2\pi)^s R_K}{\omega_K \abs{\Delta_K}^{1/2}}}t + O\brac{t^{1 - 1/n}}
+\end{align*}
+which in particular is independent of the ideal class $\gamma \in \Cl(K)$. Summing up over ideal classes yields
+\begin{align*}
+    \abs{\set{I \subseteq \o_K \mid N(I) \leq t}} &= \sum_{\gamma \in \Cl(K)}\abs{\set{I \in [I_{\gamma}^{-1}] \mid I \subseteq \o_K, N(I) \leq t}} \\ 
+    &= \brac{\frac{2^r(2\pi)^s h_KR_K}{\omega_K \abs{\Delta_K}^{1/2}}}t + O\brac{t^{1 - 1/n}}
+\end{align*}
+We have thus proved the following theorem on the distribution of integral ideals of bounded norm.
+\begin{theorem}[]
+    Let $K / \Q$ be a number field with $r$ real and $2s$ complex embeddings. Then the number of ideals $I \subseteq \o_K$ of norm at most $t$ is
+    $$
+        \brac{\frac{2^r(2\pi)^s h_KR_K}{\omega_K\abs{\Delta_K}^{1/2}}}t + O\brac{t^{1 - 1/n}}
+    $$
+    as $t \to \infty$, where $h_K$ is the class number, $R_K$ is the regulator, $\omega_K$ is the number of roots of unity in $K$ and $\Delta_K$ is the discriminant of $K$.
+\end{theorem}
+Combining this with Lemma 3 and recalling that the sum of coefficients $a_1 + \ldots + a_t$ when writing $\zeta_K(s) = \sum a_mm^{-s}$ is the number of ideals of norm at most $t$, we have also proven Theorem \ref{acnf1}, which we restate succinctly with the same setup as above.
+\begin{theorem}[Analytic class number formula]
+    The Dedekind zeta function $\zeta_K(s) = \sum_{0 \neq I \subseteq \o_K} \frac{1}{N(I)^s}$ is holomorphic on the half-plane $\Re(s) > 1$, and admits a continuation to $\Re(s) > 1 - 1/n$ holomorphic everywhere except for a simple pole at $s = 1$ with residue
+    $$
+        \Res_{s = 1}\zeta_K = \frac{2^r(2\pi)^sh_KR_K}{\omega_K\abs{\Delta_K}^{1/2}}
+    $$
+\end{theorem}
 
-borevich shafarevich
+\chapter{References}
+\begin{enum}
+    \item \hypertarget{stevenhagen}{\textsc{Stevenhagen, P.}, (2019), \emph{Number rings}, online at \emph{\color{blue}\href{https://websites.math.leidenuniv.nl/algebra/ant.pdf}{https://websites.math.leidenuniv.nl /algebra/ant.pdf}\color{black}}}
+    \item \hypertarget{sutherland}{\textsc{Sutherland, A.}, (2016), \emph{The analytic class number formula}, online at \emph{\color{blue}\href{https://math.mit.edu/classes/18.785/2017fa/LectureNotes19.pdf}{https://math.mit.edu /classes/18.785/2017fa/LectureNotes19.pdf}\color{black}}}
+\end{enum}
 
-andrew sutherland
+% Continue computation for another ideal class.
+
+% General ideal class
+
+% Ideal result to prove
+
+% Motivate by arguing for sufficiently nice boundary
+% \subsection{Lipschitz parametrisability}
+% Idea: count points in image of $\o_K$ under $\Log$, but need nice boundary
+
+% Lemma + corollary on computing with $(n - 1)$-Lipschitz parametrisable boundary.
+
+% % \subsection{Integral ideals of bounded norm}
+% The long computation
+
+% % Fudge things?
+
+% Theorem -- integral ideals of bounded norm
+
+% Corollary -- ACNF
+
+% REFERENCES - ANT stevenhagen
+
+% borevich shafarevich
+
+% andrew sutherland
 \end{document}
