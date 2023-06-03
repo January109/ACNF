@@ -4,6 +4,9 @@
 \begin{document}
 \maketitle
 We outline the proof of the analytic class number formula and how it relates to the distribution of integral ideals in the cases $K = \Q(i), \Q(\sqrt{-5})$, and briefly state the generalisation to general finite extensions of $\Q$.
+
+\section{Some motivation}
+For a general \emph{number field} (i.e. finite extension of $\Q$) $K / \Q$ we have a generalisation of the Riemann zeta function, which encodes several fundamental invariants of the number field in its values. We look at one particular value (or rather residue) and a way to arrive at this value, and how it relates to the distribution of ideals in the number field.
 \section{The Dedekind zeta function}
 The \emph{analytic class number formula} is a statement about the convergence, poles and residues of the \emph{Dedekind zeta function}, which is a natural generalisation of the usual Riemann zeta function to a finite extension $K / \Q$. We can write
 $$
@@ -13,7 +16,7 @@ and for any $K / \Q$ we have a natural analogue $\o_K \subseteq K$ of the intege
 $$
     \zeta_K(s) = \sum_{0 \neq I \subseteq \o_K} \frac1{[\o_K : I]^s} = \sum_{n = 1}^\infty \frac{\#\set{0 \neq I \subseteq \o_K \mid [\o_K : I] = n}}{n^s}
 $$
-and we refer to the index $N(I) \defeq [\o_K : I]$ as the ``norm'' of the ideal $I$. A straightforward example of the Dedekind zeta function is in the case $K = \Q(i)$. In this case $\o_K = \Z[i]$ is a principal ideal domain (in effect as the unit balls centred at points in $\Z[i]$ cover $\C$), so every ideal is uniquely represented as $I = \lrangle{a + bi}$ for $a \geq 0, b > 0$ (since the units of $\Z[i]$ are $\pm 1, \pm i$), and its norm is $a^2 + b^2$, so we have
+and we refer to the index $N(I) \defeq [\o_K : I]$ as the ``norm'' of the ideal $I$, which we can view as a measure of how large the generators are. A straightforward example of the Dedekind zeta function is in the case $K = \Q(i)$. In this case $\o_K = \Z[i]$ is a principal ideal domain (in effect as the unit balls centred at points in $\Z[i]$ cover $\C$), so every ideal is uniquely represented as $I = \lrangle{a + bi}$ for $a \geq 0, b > 0$ (since the units of $\Z[i]$ are $\pm 1, \pm i$), and its norm is $a^2 + b^2$, so we have
 $$
     \zeta_{\Q(i)}(s) = \sum_{a \geq 0, b > 0} \frac1{(a^2 + b^2)^s}
 $$
@@ -29,7 +32,7 @@ To count principal ideals in $\o_K$, we note that $(\a) = (\a')$ if and only if 
 
 For $\Z[\sqrt{-5}]$, $S = \set{re^{i\theta} \mid r \in (0, 1], \theta \in [0, \pi)}$ is the upper half plane excluding the negative real line, while for $\Z[i]$, $S = \set{re^{i\theta} \mid r \in (0, 1], \theta \in [0, \pi/2)}$ is the upper-right quarter plane excluding the positive imaginary line. Since $N(\lrangle{a + bi}) = \norm{a + bi}^2$, the points in $S_{\leq \sqrt{t}} = \ol{B(0, \sqrt{t})} \cap S = \sqrt{t}(\ol{B(0, 1)} \cap S) = \sqrt{t}S_{\leq 1}$ correspond exactly to the principal ideals of norm at most $t$. 
 
-We now look to count the number of points of $\Lambda = \o_K$ inside $rS$ for a reasonably shaped set $S$, as $r \to \infty$. Heuristically this should be asymptotic to $\mu(S)r^2$, divided by the volume $\covol(\o_K)$ of a unit grid square of $\o_K$, with an $O(t)$ error term corresponding to the boundary:
+We now look to count the number of points of $\Lambda = \o_K$ inside $rS$ for a reasonably shaped set $S$, as $r \to \infty$. Heuristically this should be asymptotic to $\mu(S)r^2$, divided by the volume $\covol(\o_K)$ of a unit grid square of $\o_K$, with an $O(r)$ error term corresponding to the boundary:
 $$
     \#(rS \cap \Lambda) = \frac{\mu(S)}{\covol(\o_K)}r^2 + O(r)
 $$
@@ -51,7 +54,7 @@ $$
 $$
 so that the ideals in $\Z[\sqrt{-5}]$ of norm at most $t$ are distributed by $\frac{2\pi}{\sqrt{5}}t + O(\sqrt{t})$.
 \section{The general case}
-In the general case we view $K$ geometrically in terms of the embeddings $K \hookrightarrow \C$, taking there to be $r$ real and $2s$ complex embeddings -- $s$ conjugate pairs of embeddings, and do similar volume computations (with a slightly altered notion of volume). The covolume of $\o_K$ is in general $\abs{\Delta_K}^{1/2}$ corresponds to the \emph{discriminant $\Delta_K$ of the field $K$} (which corresponds to the discriminant of the minimal polynomial of $\a$ where $\o_K = \Z[\a]$). 
+In the general case we view $K$ geometrically in terms of the embeddings $K \hookrightarrow \C$, taking there to be $r$ real and $2s$ complex embeddings -- $s$ conjugate pairs of embeddings, and do similar volume computations (with a slightly altered notion of volume). The covolume of $\o_K$ is in general $\abs{\Delta_K}^{1/2}$ corresponds to the \emph{discriminant $\Delta_K$ of the field $K$} (which, in the special case where $\o_K = \Z[\a]$, corresponds to the discriminant of the minimal polynomial of $\a$). 
 
 We have a factor $h$ corresponding to how many classes of ideals there are (up to principal ideals), since the coefficient of the principal term for each class remains the same, as we saw in the $\Z[\sqrt{-5}]$ case. The unit group $\o_K^*$ in general is the product of the roots of unity and a free abelian group $U \subseteq \o_K^*$, and we have a factor $R$ corresponding to the density of the free abelian part of $\o_K^*$, and divide by the number of roots of unity $\omega$. Corresponding to the $r$ real and $s$ complex pairs of embeddings we have factors of $2^r$ and $(2\pi)^s$, which in essence come from the length of $[-1, 1]$ and integrating over some sector of the unit circle in $\C$.
 

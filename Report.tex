@@ -23,7 +23,7 @@ We can view the number field geometrically through the embeddings $K \to \C$ (de
 $$
     K_\R \defeq \set{(z_\sigma)_{\sigma} \in \prod_{\sigma : K \to \C}\C \mid z_{\ol\sigma} = \ol{z}_\sigma}
 $$
-by $\iota : x \mapsto (\sigma(x))_{\sigma}$, and we have a corresponding group of units $K_\R^*$ under pointwise multiplication. We identify $K_\R$ with $\R^r \times \C^s$ (and thus $K_\R^*$ with $(\R^*)^r \times (\C^*)^s$) by choosing one embedding from each conjugate pair: writing the embeddings as $\sigma_1, \ldots, \sigma_r, \sigma_{r + 1}, \ol{\sigma_{r + 1}}, \ldots, \sigma_{r + s}, \ol{\sigma_{r + s}}$, our identification is exactly $(z_\sigma)_\sigma \leftrightarrow (z_{\sigma_i})_{i = 1}^{r + s}$. This also yields a \hyperlink{geomnorm}{\emph{geometric norm}} on $K_\R^*$ analogous to that of the field norm, by $\enn((z_\sigma)_{\sigma : K \to \C}) = \prod_{\sigma : K \to \C}\abs{z_\sigma}$, and this is compatible with the field norm by $\enn(\iota(x)) = \abs{N(x)}$.
+by $\iota : x \mapsto (\sigma(x))_{\sigma}$, and we have a corresponding group of units $K_\R^*$ under pointwise multiplication. We identify $K_\R$ with $\R^r \times \C^s$ (and thus $K_\R^*$ with $(\R^*)^r \times (\C^*)^s$) by choosing one embedding from each conjugate pair: writing the embeddings as $\sigma_1, \ldots, \sigma_r, \sigma_{r + 1}, \ol{\sigma_{r + 1}}, \ldots, \sigma_{r + s}, \ol{\sigma_{r + s}}$, our identification is exactly $(z_\sigma)_\sigma \leftrightarrow (z_{\sigma_i})_{i = 1}^{r + s}$. This also yields a \hypertarget{geomnorm}{\emph{geometric norm}} on $K_\R^*$ analogous to that of the field norm, by $\enn((z_\sigma)_{\sigma : K \to \C}) = \prod_{\sigma : K \to \C}\abs{z_\sigma}$, and this is compatible with the field norm by $\enn(\iota(x)) = \abs{N(x)}$.
 
 The volumes in $K_\R$ are induced by the standard inner product on $\prod_{\sigma : K \to \C}\C = \C^n$, which yields the usual volume in the components corresponding to real embeddings $K \to \R$, but gives twice the volume in components corresponding to conjugate pairs: writing $z_j = x_j + y_ji$ for $j = 1, 2$, the inner product in these components is given by $\lrangle{(z_1, \ol{z_1}), (z_2, \ol{z_2})} = z_1\ol{z_2} + \ol{z_1}z_2 = 2\Re(z_1\ol{z_2}) = 2(x_1y_1 + x_2y_2)$.
 
@@ -197,7 +197,7 @@ For a set $S \subseteq K_\R$ with Lipschitz parametrisable boundary and a lattic
     $$
     as $t \to \infty$.
 \end{lemma}
-That is, number of lattice points in $tS$ grows like $t^n$ multiplied by the ratio of volumes $\mu(S)/\covol(\Lambda)$ as $t$ gets large. A proof of this result can be found in \hyperlink{sutherland}{[2]}
+That is, number of lattice points in $tS$ grows like $t^n$ multiplied by the ratio of volumes $\mu(S)/\covol(\Lambda)$ as $t$ gets large. A proof of this result can be found as 19.5 and 19.6 in \hyperlink{sutherland}{[2]}
 % \begin{corollary}
 % \end{corollary}
 \subsection{Integral ideals of bounded norm}
@@ -280,7 +280,7 @@ Dividing by $\omega_K$ to account for the $\omega_K$-to-1 map $S_{\leq t} \cap \
 \begin{align}\label{prin}
     \abs{\set{(\a) \subseteq \o_K \mid N(\a) \leq t}} = \frac{2^r(2\pi)^sR_K}{\omega_K\covol(\o_K)} + O\brac{t^{1 - 1/n}}
 \end{align}
-For an arbitrary ideal class $\gamma \in \Cl(K)$, we aim to show  note first that (\ref{prin}) generalises to any non-zero ideal $I \subseteq \o_K$ by replacing $I$ with $o_K$ and noting that $S_{\leq 1} \cap I$ counts the number of principal ideals $(\a) \subseteq I$, yielding
+For an arbitrary ideal class $\gamma \in \Cl(K)$, we aim to show  note first that (\ref{prin}) generalises to any non-zero ideal $I \subseteq \o_K$ by replacing $I$ with $\o_K$ and noting that $S_{\leq 1} \cap I$ counts the number of principal ideals $(\a) \subseteq I$, yielding
 \begin{align}
     \abs{\set{(\a) \subseteq I \mid N(I) \leq t}} = \brac{\frac{2^r(2\pi)^sR_K}{\omega_K\covol(I)}}t + O(t^{1 - 1/n})
 \end{align}
@@ -307,7 +307,7 @@ We have thus proved the following theorem on the distribution of integral ideals
     $$
     as $t \to \infty$, where $h_K$ is the class number, $R_K$ is the regulator, $\omega_K$ is the number of roots of unity in $K$ and $\Delta_K$ is the discriminant of $K$.
 \end{theorem}
-Combining this with Lemma 3 and recalling that the sum of coefficients $a_1 + \ldots + a_t$ when writing $\zeta_K(s) = \sum a_mm^{-s}$ is the number of ideals of norm at most $t$, we have also proven Theorem \ref{acnf1}, which we restate succinctly with the same setup as above.
+Combining this with Lemma \ref{growthrate} and recalling that the sum of coefficients $a_1 + \ldots + a_t$ when writing $\zeta_K(s) = \sum a_mm^{-s}$ is the number of ideals of norm at most $t$, we have also proven Theorem \ref{acnf1}, which we restate succinctly with the same setup as above.
 \begin{theorem}[Analytic class number formula]
     The Dedekind zeta function $\zeta_K(s) = \sum_{0 \neq I \subseteq \o_K} \frac{1}{N(I)^s}$ is holomorphic on the half-plane $\Re(s) > 1$, and admits a continuation to $\Re(s) > 1 - 1/n$ holomorphic everywhere except for a simple pole at $s = 1$ with residue
     $$
