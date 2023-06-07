@@ -1,0 +1,57 @@
+\documentclass[11pt]{article}
+\usepackage{styles} 
+\title{Analytic class number formula talk}
+\begin{document}
+\maketitle
+We outline the proof of the analytic class number formula and how it relates to the distribution of integral ideals in the case $K = \Q(i)$, and briefly state the generalisation to general finite extensions of $\Q$.
+
+% \section{Some motivation}
+% For a general \emph{number field} (i.e. finite extension of $\Q$) $K / \Q$ we have a generalisation of the Riemann zeta function, which encodes several fundamental invariants of the number field in its values. We look at one particular value (or rather residue) and a way to arrive at this value, and how it relates to the distribution of ideals in the number field.
+\section{The Dedekind zeta function and some motivation}
+For any finite extension $K / \Q$ we have a generalisation of the usual Riemann zeta function: for $\Q$ we can write
+$$
+    \zeta(s) = \sum_{n = 1}^\infty \frac1{n^s} = \sum_{0 \neq I \subseteq \Z} \frac1{[\Z : I]^s}
+$$
+and for any $K / \Q$ we have a natural analogue $\o_K \subseteq K$ of the integers $\Z \subseteq \Q$, the ``ring of integers of $K$''. Taking the natural generalisation of the above, the Dedekind zeta function is
+$$
+    \zeta_K(s) = \sum_{0 \neq I \subseteq \o_K} \frac1{[\o_K : I]^s} = \sum_{n = 1}^\infty \frac{\#\set{0 \neq I \subseteq \o_K \mid [\o_K : I] = n}}{n^s}
+$$
+and we can think of the index $N(I) \defeq [\o_K : I]$ as the ``norm'' of the ideal $I$, which we can view as a measure of how large the generators are. We are interested in the convergence, poles and their residues of this (a priori formal) function. It turns out we have a continuation to the whole complex plane except a simple pole at $s = 1$, whose residue encodes many invariants about the field $K$. For the rest of the talk we will only consider the case $K = \Q(i)$.
+
+When $K = \Q(i)$, $\o_K = \Z[i]$ is a principal ideal domain (in effect as the unit balls centred at points in $\Z[i]$ cover $\C$), so every ideal is uniquely represented as $I = \brac{a + bi}$ for $a \geq 0, b > 0$ (since the units of $\Z[i]$ are $\pm 1, \pm i$), and its index is $a^2 + b^2$ (this is just the volume of the square with $0, a + bi$ and $i(a + bi)$ as 3 of its vertices), so we have
+$$
+    \zeta_{\Q(i)}(s) = \sum_{a \geq 0, b > 0} \frac1{(a^2 + b^2)^s}
+$$
+\section{Distribution of ideals}
+More generally, for a sequence $(a_n)$ with $\sum_{n = 1}^t a_n = \rho t + O(t^\sigma)$ where $\sigma \in [0, 1)$, the associated ``Dirichlet series''
+$$
+    \sum_{n = 1}^\infty \frac{a_n}{n^s}
+$$
+admits a continuation to $\Re(s) > \sigma$ holomorphic everywhere except for a simple pole at $s = 1$ of residue $\rho$ (effectively bootstrapped off the statement for the Riemann zeta function). For the Dedekind zeta function, $a_n$ is the number of ideals of norm $n$, so we want to argue about asymptotically about the distribution of ideals of norm at most $t$ as $t \to \infty$.
+
+To count principal ideals in $\Z[i]$, we note that $(\a) = (\a')$ if and only if $\a/\a' \in \Z[i]^*$ (with $\Z[i]^* = \lrangle{i}$)\footnote{Here we can check this by noting $a + bi \mapsto a^2 + b^2$ is multiplicative from $\Z[i] \to \Z$}. The principal ideals in $\Z[i]$ thus correspond to the points of $\Z[i]$ in some suitable ``multiplicative complement'' $S$ of $\Z[i]^*$ in $\C^*$, i.e. a set $S$ so that every $x \in \C^*$ can be written uniquely in the form $x_1x_2$ for $x_1 \in S$, $x_2 \in \Z[i]^*$. 
+
+For $\Z[i]$, $S = \set{re^{i\theta} \mid r \in (0, 1], \theta \in [0, \pi/2)}$ is the upper-right quarter plane excluding the positive imaginary line. Since $N(\brac{a + bi}) = \norm{a + bi}^2$, the points in $S_{\leq \sqrt{t}} = \ol{B(0, \sqrt{t})} \cap S = \sqrt{t}(\ol{B(0, 1)} \cap S) = \sqrt{t}S_{\leq 1}$ correspond exactly to the principal ideals of norm at most $t$. 
+
+We now look to count the number of points of the lattice $\Lambda = \Z[i]$ inside $rS$ for a reasonably shaped set $S$, as $r \to \infty$. Heuristically this should be asymptotic to $\mu(S)r^2$, divided by the volume $\covol(\Z[i])$ of a unit grid square of $\o_K$, with an $O(r)$ error term corresponding to the boundary:
+$$
+    \#(rS \cap \Lambda) = \frac{\mu(S)}{\covol(\Z[i])}r^2 + O(r)
+$$
+Applying this to our case, $S_{\leq 1}$ is the top-right quarter circle for $\Z[i]$. We thus compute
+\begin{align*}
+    \#\set{0 \neq (\a) \subseteq \Z[i] \mid N(\a) \leq t} &= \frac{\pi}{4}t + O(\sqrt{t})
+\end{align*}
+and so in this case we have convergence on $\Re(s) > 1/2$, except for a pole at $s = 1$ with residue $\pi/4$.
+\section{The general case}
+The procedure outlined above will, in general, compute the distribution of principal ideals, and yield a value dependent on
+\begin{enum}
+    \item The degree of $K / \Q$, more specifically the number of embeddings $K \hookrightarrow \C$ with real or complex embeddings
+    \item The unit group -- in general this will be a product of a free abelian part and the roots of unity
+    \item The ``size'' of $\o_K$, usually written $\sqrt{\abs{\Delta_K}}$
+\end{enum}
+In a general extension $K / \Q$ there are finitely many ``classes'' of ideals up to principal ideals. More formally, we can extend the ideals with multiplication to a group by ``allowing denominators'', where the set of principal ideals ``allowing denominators'' is a subgroup of finite index. Given an ideal class, we can multiply by any ideal in its inverse class (to map it to the principal ideals in $\o_K$) and do a similar point-counting argument. The principal term in the distribution of ideals in each class is actually independent of ideal class, so this ultimately just gives us a factor corresponding to the number of ideal classes. Put together, ideals of index at most $t$ are distributed by
+$$
+    \frac{2^r(2\pi)^shR}{\omega \sqrt{\abs{\Delta_K}}}t + O(t^{1 - 1/n})
+$$
+where $r$ is the number of real embeddings, $s$ the number of complex embeddings. The $2^r$, $\pi^s$ correspond to the sets of norm at most 1 being the interval $[-1, 1]$ and the unit disk, $R$ is a term corresponding to the density of the free units in $\o_K$, and $\sqrt{\abs{\Delta_K}}/2^s$ is the covolume of $\o_K$, and the error term comes comes from $(t^{1/n})^{n - 1}$.
+\end{document}
