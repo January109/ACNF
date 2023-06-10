@@ -11,7 +11,7 @@ We give an exposition of the analytic class number formula, usually stated as a 
 % Outline ACNF, show how distribution of ideals relates
 \tableofcontents
 \chapter{Background} % Set up notation
-We assume that the reader is familiar with some of the fundamental objects in algebraic number theory \hyperlink{stevenhagen}{[1]}, namely \emph{number fields} $K / \Q$, their associated \emph{rings of integers} $\o_K \subseteq K$, \emph{class groups} $\Cl(K)$ and \emph{unit groups} $\o_K^*$. We also assume the reader is familiar with the discriminant $\Delta_K$ of a number field $K$, and the field norm $N$ and ideal norms $\en$ and their compatibility (that is that $\en((\a)) = \abs{N(\a)}$ for $\a \neq 0$). We have the following structure result for the class group $\Cl(K)$:
+We assume that the reader is familiar with some of the fundamental objects in algebraic number theory \hyperlink{stevenhagen}{[2]}, namely \emph{number fields} $K / \Q$, their associated \emph{rings of integers} $\o_K \subseteq K$, \emph{class groups} $\Cl(K)$ and \emph{unit groups} $\o_K^*$. We also assume the reader is familiar with the discriminant $\Delta_K$ of a number field $K$, and the field norm $N$ and ideal norms $\en$ and their compatibility (that is that $\en((\a)) = \abs{N(\a)}$ for $\a \neq 0$). We have the following structure result for the class group $\Cl(K)$:
 \begin{theorem}[Finiteness of the class group]
     Let $K$ be a number field. Then $\Cl(K)$ is a finite abelian group.
 \end{theorem}
@@ -56,7 +56,7 @@ and with respect to a basis $x_1, \ldots, x_{r + s - 1}$ for the image of $\o_K^
 \begin{theorem}[Dirichlet's unit theorem]\label{dirunit}
     Let $K$ be a number field, and $\mu_K$ be the set of roots of unity in $K$. Then $\o_K^* \cong \mu_K \times \Z^{r + s - 1}$.
 \end{theorem}
-That is, there is a free $\Z$-submodule $U$ of $\o_K^*$ of rank $(r + s - 1)$ so that every $u \in \o_K^*$ is of the form $u = \omega u'$ for $\omega \in \mu_K$ and $u' \in U$.
+That is, the unit group splits into 2 parts: a free part, i.e. a free $\Z$-submodule $U$ of $\o_K^*$ of rank $(r + s - 1)$), and the roots of unity in $K$.
 % Talk about projection \R^{r + s} \twoheadrightarrow \R^{r + s - 1} and inducing volume off this (well-definedness?)
 % Well-defined as projection restricted to trace zero hyperplane is a shear (inverse of change of basis sending x_i \mapsto x_1 + ... + x_n)
 % This volume is independent of the basis chosen as a change of basis matrix $M$ between $\Z$-bases has $\abs{\det(M)} = 1$, and we 
@@ -99,11 +99,11 @@ The statement of this theorem and formula may seem slightly out of the blue, tho
 \begin{align}\label{coeffs}
     \zeta_K(s) = \sum_{m = 1}^\infty \frac{\abs{\set{I \subseteq \o_K \mid [\o_K : I] = m}}}{m^s}
 \end{align}
-This is a series of the form $\sum_{m = 1}^\infty a_mm^{-s}$ where $a_m$ is exactly the number of ideals of norm $m$. We have a bijection between principal ideals of norm at most $t$ and $\set{\a \in \o_K \setminus \set{0} \mid \abs{N(\a)} \leq t} / \o_K^*$, and intuitively we should be able to approximate the number of points of a lattice $\Lambda$ (such as $\o_K^* \subseteq \R_0^{r + s}$) in the set $tS$ as $t \to \infty$ by $\abs{tS \cap \Lambda} = \frac{\mu(S)}{\covol(\Lambda)}t^n + O(t^{n - 1})$, where the $O(t^{n - 1})$ error term represents points near the boundary of $tS$. 
+This is a series of the form $\sum_{m = 1}^\infty a_mm^{-s}$ where $a_m$ is exactly the number of ideals of norm $m$. We have a bijection between non-zero principal ideals of norm at most $t$ and $\set{\a \in \o_K \setminus \set{0} \mid \abs{N(\a)} \leq t} / \o_K^*$ as $(\a) = (\a')$ if and only if $\a/\a' \in \o_K^*$, and intuitively we should be able to approximate the number of points of a lattice $\Lambda$ (such as $\o_K^* \subseteq \R_0^{r + s}$) in the set $tS$ as $t \to \infty$ by $\abs{tS \cap \Lambda} = \frac{\mu(S)}{\covol(\Lambda)}t^n + O(t^{n - 1})$, where the $O(t^{n - 1})$ error term represents points near the boundary of $tS$. 
 
 The number of principal ideals of norm at most 1 should then be the size of $S_1 \cap \o_K$ where $S_1$ is a reasonably shaped set so that every $x \in K_\R^*$ of norm $\enn(x) \leq 1$ can be written uniquely as a product $x_1x_2$ for $x_1 \in S_1$, $x_2 \in \o_K^*$. Since scaling uniformly by $t^{1/n}$ scales $n$-dimensional volume by $t$, the number of principal ideals of norm at most $t$ should then be counted by a set of the form $t^{1/n} S \cap \Lambda$. We thus may expect the number of ideals of norm at most $t$ to be asymptotically $\frac{\mu(S)}{\covol(\Lambda)}t + O(t^{1 - 1/n})$, which would establish the half-plane of convergence, and suggests the $\abs{\Delta_K}^{1/2}$ factor in the denominator of the residue corresponds exactly to $\covol(\o_K)$.
 
-The set $S_1 \subseteq K_\R^*$ can be viewed as a multiplicative complement of $\o_K^*$ in the ``closed unit ball'' $\B = \set{x \in K_\R^* \mid \enn(x) \leq 1}$. The factor of $R_K/\omega_K$ [[density of units in trace zero hyperplane under $\Log$ map, $\omega_K$ from fibres of $\Log$ map]] The set $\B$ has $2^r$ connected components ($2$ for each $\R^*  = \R^- \sqcup \R^+$ component), and [2 pi from polar decomposition].
+The set $S_1 \subseteq K_\R^*$ can be viewed as a multiplicative complement of $\o_K^*$ in the ``closed unit ball'' ${\B = \set{x \in K_\R^* \mid \enn(x) \leq 1}}$. When $\o_K^*$ is ``larger'' in $K^*$, $S_1$ should be smaller, and so the factor of $R_K/\omega_K$ should correspond to the unit group $\o_K^*$, with $R_K$ corresponding to the density of the free part of the unit group in $K$ (being the covolume of $\o_K^*$ in $\R_{0}^{r + s}$), and $1/\omega_K$ from the roots of unity. The set $\B$ has $2^r$ connected components ($2$ for each $\R^*  = \R^- \sqcup \R^+$ component), and the factor of $(2\pi)^s$ can be viewed as encoding the range of possible arguments in each $\C^*$ component.
 
 % The Dedekind zeta function (state both formulations - norms of ideals and number of ideals of each norm)
 
@@ -116,7 +116,7 @@ The set $S_1 \subseteq K_\R^*$ can be viewed as a multiplicative complement of $
 We begin by establishing a connection between the asymptotic distribution of ideals of bounded norm and the convergence and poles of the Dedekind zeta function, and then estimate the number of ideals with bounded norm by estimating using point-counting.
 
 \section{Series and continuations} % COME UP WITH BETTER NAMES
-Before considering a general series of the form $\sum_{m = 1}^\infty a_mm^{-s}$ first establish these convergence results for the Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty m^{-s}$, which will correspond to the principal term in our asymptotic formula for the ideals of bounded norm, and the pole of $\zeta_K$ at $s = 1$.
+Before considering a general series of the form $\sum_{m = 1}^\infty a_mm^{-s}$, we first establish these convergence results for the Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty m^{-s}$, which will correspond to the principal term in our asymptotic formula for the ideals of bounded norm, and the pole of $\zeta_K$ at $s = 1$.
 \begin{lemma}
     The Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty \frac1{m^s}$ defines a holomorphic function for $\Re(s) > 1$, and admits a meromorphic continuation to $\Re(s) > 0$ except for a pole at $s = 1$ of residue $1$.
 \end{lemma}
@@ -151,11 +151,11 @@ The previous lemma suggests the asymptotic distribution of ideals of bounded nor
     Let $(a_m)$ be a sequence of complex numbers, $\sigma \in \R$ and suppose that $\sum_{m = 1}^t a_m = O(t^\sigma)$. Then the series $\sum_{m = 1}^\infty a_mm^{-s}$ defines a holomorphic function on $\Re(s) > \sigma$.
 \end{lemma}
 \begin{proof}
-    Let $\Re(s) > \sigma$. Applying Abel's theorem \textbf{[[reference apostol]]} to $f(x) = x^{-s}$ and $A(x) = \sum_{m \leq x}a_m$ on $[1/2, x]$ and noting that $A(x) = 0$ for $x < 1$, we find
+    Let $\Re(s) > \sigma$. Applying Abel's theorem [\hyperref{apostol}{1}, Theorem 4.2] to $f(x) = x^{-s}$ and $A(x) = \sum_{m \leq x}a_m$ on $[1/2, x]$ and noting that $A(x) = 0$ for $x < 1$, we find
     $$
         \sum_{m \leq x}a_mm^{-s} = A(x)x^{-s} - (-s)\int_{1/2}^x \frac{A(t)}{t^{s + 1}}dt = A(x)x^{-s} + s\int_1^x\frac{A(t)}{t^{s + 1}}dt
     $$
-    We note that $\abs{A(x)x^{-s}} = O(x^{\sigma - \Re(s)})$ and $\abs{A(t)/t^{s + 1}} = O(t^{\sigma - \Re(s) - 1})$ and $\sigma - \Re(s) - 1 < -1$. Thus the right-hand side converges as $x \to \infty$, and so $\sum_{m = 1}^t a_mm^{-s}$ defines a holomorphic function on $\Re(s) > \sigma$.
+    We note that $\abs{A(x)x^{-s}} = O(x^{\sigma - \Re(s)})$ and $\abs{A(t)/t^{s + 1}} = O(t^{\sigma - \Re(s) - 1})$ and $\sigma - \Re(s) - 1 < -1$. Thus the right-hand side converges uniformly locally on $\Re(s) > \sigma$ as $x \to \infty$, and so $\sum_{m = 1}^t a_mm^{-s}$ defines a holomorphic function on $\Re(s) > \sigma$.
 \end{proof}
 Putting these two together, we have
 \begin{lemma}\label{growthrate}
@@ -197,7 +197,7 @@ For a set $S \subseteq K_\R$ with Lipschitz parametrisable boundary and a lattic
     $$
     as $t \to \infty$.
 \end{lemma}
-That is, number of lattice points in $tS$ grows like $t^n$ multiplied by the ratio of volumes $\mu(S)/\covol(\Lambda)$ as $t$ gets large. A proof of this result can be found as 19.5 and 19.6 in \hyperlink{sutherland}{[2]}
+That is, number of lattice points in $tS$ grows like $t^n$ multiplied by the ratio of volumes $\mu(S)/\covol(\Lambda)$ as $t$ gets large. A proof of this result can be found as 19.5 and 19.6 in \hyperlink{sutherland}{[3]}.
 % \begin{corollary}
 % \end{corollary}
 \subsection{Integral ideals of bounded norm}
@@ -231,7 +231,7 @@ Denote by $S_{\leq 1}^a = S_{\leq 1} \cap \prod_{j = 1}^r\R^{a_j}$ the connected
 $$
     D = \set{\sum_{j = 1}^{r + s - 1} b_j\Log(\e_j) \mid 0 \leq b_j < 1}
 $$
-is the fundamental parallelepiped of $\set{e_j}_{j = 1}^{r + s - 1}$, we can parametrise $S_{\leq 1}^a$ in $n$ components, by taking $r + s - 1$ components in $[0, 1)$ encoding $x/\enn(x)^{1/n}$ by its $\R$-coefficients when expressed in terms of $\Log(\e_1), \ldots, \Log(\e_{r + s - 1})$, $s$ components in $[0, 1)$ encoding points in $S^1$, and 1 component for $\enn(x)^{1/n}$. These yield a continuously differentiable (in particular Lipschitz) bijection $C = [0, 1)^{n - 1} \times (0, 1] \subseteq [0, 1]^n \to S_{\leq 1}^a$: each map in the first set maps a point to its component in a basis, the second set consists of maps of the form $x \mapsto e^{2\pi i x}$, and the third is differentiable as the absolute value is differentiable away from $0$. The boundary of $C$ is then the Lipschitz parametrisable set $\partial [0, 1]^n$, and so the above bijection shows $S_{\leq 1}^a$ is parametrisable for each $a \in \set{\pm 1}^r$, and thus so is $S_{\leq 1}$.
+is the fundamental parallelepiped of $\set{e_j}_{j = 1}^{r + s - 1}$, we can parametrise $S_{\leq 1}^a$ in $n$ components, by taking $r + s - 1$ components in $[0, 1)$ encoding $x/\enn(x)^{1/n}$ by its $\R$-coefficients when expressed in terms of $\Log(\e_1), \ldots, \Log(\e_{r + s - 1})$, $s$ components in $[0, 1)$ encoding points in $S^1$ by argument, and 1 component for $\enn(x)^{1/n}$. These yield a continuously differentiable (in particular Lipschitz) bijection $C = [0, 1)^{n - 1} \times (0, 1] \subseteq [0, 1]^n \to S_{\leq 1}^a$: each map in the first set maps a point to its component in a basis, the second set consists of maps of the form $x \mapsto e^{2\pi i x}$, and the third is differentiable as the absolute value is differentiable away from $0$. The boundary of $C$ is then the Lipschitz parametrisable set $\partial [0, 1]^n$, and so the above bijection shows $S_{\leq 1}^a$ is parametrisable for each $a \in \set{\pm 1}^r$, and thus so is $S_{\leq 1}$.
 
 Applying Lemma \ref{ptcount} to $\Lambda = \o_K$, $S = S_{\leq 1}$ and with $t^{1/n}$ in place of $t$ yields
 \begin{align}
@@ -258,12 +258,12 @@ $$
 $$
 To simplify the exponent we change the last variable (fixing the other variables) to 
 $$
-    t = \ell_1 + \ldots + \ell_{r + s} = \log\abs{x_1} + \ldots + \log\abs{x_r} + 2\log\abs{z_1} + \ldots 2\log\abs{z_s} = \log(N(x))
+    t = \ell_1 + \ldots + \ell_{r + s} = \log\abs{x_1} + \ldots + \log\abs{x_r} + 2\log\abs{z_1} + \ldots 2\log\abs{z_s} = \log(\enn(x))
 $$
 We then have $dt = d\ell_{r + s}$, and letting $\pi : \R^{r + s} \twoheadrightarrow \R^{r + s - 1}$ be the projection onto the first $r + s - 1$ components and letting $\ell = (\ell_1, \ldots, \ell_{r + s - 1})$ and $d\ell = d\ell_1 \ldots d\ell_{r + s - 1}$, the $\Log$ map ultimately maps $S_{\leq 1}^a$ to $\pi(D) \times (-\infty, 0]$ under this reindexing, so we can write our change of variables as
 \begin{align*}
     S_{\leq 1}^a &\to \pi(D) \times (-\infty, 0] \times [0, 2\pi)^s \\
-    x = (x_1, \ldots, x_r, z_1, \ldots, z_s) &\mapsto (\pi(\Log(x)), \log(N(x)), \arg(z_1), \ldots, \arg(z_s)) =\vcentcolon (\ell, t, \theta_1, \ldots, \theta_s) \\
+    x = (x_1, \ldots, x_r, z_1, \ldots, z_s) &\mapsto (\pi(\Log(x)), \log(\enn(x)), \arg(z_1), \ldots, \arg(z_s)) =\vcentcolon (\ell, t, \theta_1, \ldots, \theta_s) \\
     dx_1 \ldots dx_r dz_1 \ldots dz_s &= e^t d\ell dt d\theta_1 \ldots d\theta_s
 \end{align*}
 Noting then that the regulator $R_K$ is exactly the volume (or measure) of $\pi(D)$, we then have
@@ -317,6 +317,7 @@ Combining this with Lemma \ref{growthrate} and recalling that the sum of coeffic
 
 \chapter{References}
 \begin{enum}
+    \item \hypertarget{apostol}{\textsc{Apostol, T.}, (1976), \emph{Introduction to Analytic Number Theory}, Undergraduate Texts in Mathematics. Springer-Verlag, New York-Heidelberg}
     \item \hypertarget{stevenhagen}{\textsc{Stevenhagen, P.}, (2019), \emph{Number rings}, online at \emph{\color{blue}\href{https://websites.math.leidenuniv.nl/algebra/ant.pdf}{https://websites.math.leidenuniv.nl /algebra/ant.pdf}\color{black}}}
     \item \hypertarget{sutherland}{\textsc{Sutherland, A.}, (2016), \emph{The analytic class number formula}, online at \emph{\color{blue}\href{https://math.mit.edu/classes/18.785/2017fa/LectureNotes19.pdf}{https://math.mit.edu /classes/18.785/2017fa/LectureNotes19.pdf}\color{black}}}
 \end{enum}

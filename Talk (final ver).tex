@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+\usepackage{styles} 
+\title{Rough script for talk}
+\begin{document}
+\maketitle
+We define a generalisation of the Riemann zeta function to a finite extension $K / \Q$, and compute one of its values which is closely tied to the properties of the field $K$. We refer to such a field as a \emph{number field}.
+
+We have the usual Riemann zeta function
+$$
+    \zeta_\Q(s) = \sum_{n = 1}^\infty \frac1{n^s} = \sum_{0 \neq I \subseteq \Z}\frac1{[\Z : I]^s}
+$$
+where we note that the non-zero ideals in $\Z$ are of the form $I = n\Z$ (for $n > 0$) with index $n$. For a general number field $K$ we have an analogue $\o_K \subseteq K$ of $\Z \subseteq \Q$, the ``ring of integers in $K$'', and we have the \emph{Dedekind zeta function} 
+\begin{align}\label{dzf}
+    \zeta_K(s) = \sum_{0 \neq I \subseteq \o_K}\frac1{[\o_K : I]^s} = \sum_{n = 1}^\infty \frac{\# \set{I \subseteq \o_K \mid [\o_K : I] = n}}{n^s}
+\end{align}
+Where the latter equality follows by grouping terms by denominator. At first glance this is just a formal function, but this actually converges on $\Re(s) > 1$, with a continuation to $\Re(s) > 1 - 1/d$ (and actually to the whole complex plane), where $d = [K : \Q]$, except for a simple pole at $s = 1$, whose residue is related to the distribution of ideals in $\o_K$. We will outline the argument behind these facts and the residue computation in the case $K = \Q(i)$.
+
+When $K = \Q(i)$, the associated ring of integers is $\o_K = \Z[i]$, which is a principal ideal domain as it is Euclidean, and so every non-zero ideal can be written uniquely as $I = (a + bi)$ for $a \geq 0, b > 0$. The index of such an ideal is $N((a + bi)) = a^2 + b^2 = \abs{a + bi}^2$, which we can make sense of heuristically as the area of the square with sides $a + bi$ and $i(a + bi)$.\footnote{The exact argument involves dividing this square into 5 regions (4 congruent right triangles with non-hypotenuse sides parallel to the axes, and a central square, which may be empty) and translating these to give rectangular regions, whose areas are exactly the products of their sidelengths}. The Dedekind zeta function is thus explicitly
+$$
+    \zeta(s) = \zeta_{\Q(i)}(s) = \sum_{a \geq 0, b > 0} \frac1{(a^2 + b^2)^s}
+$$
+To relate the behaviour of $\zeta$ to the distribution of ideals in $\Z[i]$, for series of the form $\sum_{n = 1}^\infty \frac{a_n}{n^s}$ with $\sum_{n \leq t} a_n = \rho t + O(t^\sigma)$, i.e. scaling linearly up to some error term $t^\sigma$ for $\sigma < 1$, we have convergence on $\Re(s) > 1$, and a continuation to $\Re(s) > \sigma$ except for a simple pole at $s = 1$ with residue $\rho$. In effect, this comes from the statement for the usual Riemann zeta function, and as $\sum_{n = 1}^\infty \frac{a_n}{n^s}$ converges on $\Re(s) > \sigma$ whenever $\sum_{n \leq t} a_n = O(t^\sigma)$.
+
+Applying this to our case, (\ref{dzf}) shows that $\zeta$ is a series of this form with $a_n$ being the number of ideals of index $n$, and so we can instead show that the number of ideals of norm at most $t$ scales like $\rho t + O(t^{1/2})$ for some suitable $\rho$, reducing our case to a point-counting argument.
+
+Note that $\a, \a' \in \Z[i]$ generate the same ideal if and only if $\a/\a' \in \Z[i]^* = \lrangle{i}$, so non-zero ideals in $\Z[i]$ correspond bijectively to points in the quarter-plane $S = \set{z \in \C \mid 0 \leq \arg(z) < \pi/2}$, which we can think of as a multiplicative complement to $\lrangle{i}$ in $\C^*$. Since the index of $(a + bi)$ is the square of the Euclidean norm, ideals of index at most $t$ correspond to points in $S \cap \ol{B(0, t^{1/2})}$. These regions are related by $t^{1/2}(S \cap \ol{B(0, 1)})$. For $t$ sufficiently large, this is approximated by
+$$
+    \frac{\vol(t^{1/2}(S \cap \ol{B(0, 1)}))}{\covol(\Z[i])} = \frac\pi4t
+$$
+with error term corresponding to points around the boundary of $t^{1/2}(S \cap \ol{B(0, 1)})$, which is $O(t^{1/2})$ (as it is on the same order of magnitude as the length of the boundary). All in all, we have
+$$
+    \#\set{I \subseteq \o_K \mid [\o_K : I] \leq t} = \frac\pi4t + O(t^{1/2})
+$$
+and so $\zeta$ extends to a holomorphic function on $\Re(s) > 1/2$, except for a simple pole at $s = 1$ of residue $\frac\pi4$.
+
+For a general number field $K$, we view $K$ geometrically through its images under the embeddings $K \hookrightarrow \C$. When there are $r$ embeddings with real image and $s$ complex conjugate pairs, this corresponds to $K \subseteq \R^r \times \C^s$. The above procedure of computing the volume of $S_1 = S \cap \ol{B(0, 1)}$ for a reasonably shaped multiplicative complement $S \subseteq (\R^*)^r \times (\C^*)^s$ (and covolume of $\o_K$) computes the distribution of principal ideals in $\o_K$, and in general the volume of $S_1$ depends on the number of real and complex embeddings, and the density of units in $\o_K$ (being smaller when units in $\o_K$ are more dense).
+
+For non-principal ideals, in general there are finitely many classes of ideals up to principal ones, and so we can actually apply a similar point-counting argument for a general ideal class. This actually yields the same principal and error terms independent of class, so this residue has a factor corresponding to the number of ideal classes up to principal ideals.
+
+The formula in general thus has factors corresponding to the number of real and complex embeddings, the density of units in $\o_K$, the covolume of $\o_K$ and the number of ideal classes. Thus, as an application, given all but one of these, we can approximate the remaining value using the residue. In particular this is usually applied to find (or estimate) the number of ideal classes, since this is necessarily an integer value.
+\end{document}
