@@ -116,42 +116,40 @@ The set $S_1 \subseteq K_\R^*$ can be viewed as a multiplicative complement of $
 We begin by establishing a connection between the asymptotic distribution of ideals of bounded norm and the convergence and poles of the Dedekind zeta function, and then estimate the number of ideals with bounded norm by estimating using point-counting.
 
 \section{Series and continuations} % COME UP WITH BETTER NAMES
-Before considering a general series of the form $\sum_{m = 1}^\infty a_mm^{-s}$, we first establish these convergence results for the Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty m^{-s}$, which will correspond to the principal term in our asymptotic formula for the ideals of bounded norm, and the pole of $\zeta_K$ at $s = 1$.
+Before considering more general series of the form $\sum_{m = 1}^\infty a_mm^{-s}$ such as the Dedekind zeta function, we first describe these convergence results for the Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty m^{-s}$, which will correspond to the principal term in our asymptotic formula for the ideals of bounded norm, and the pole of $\zeta_K$ at $s = 1$. We have the following classical result:
 \begin{lemma}
-    The Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty \frac1{m^s}$ defines a holomorphic function for $\Re(s) > 1$, and admits a meromorphic continuation to $\Re(s) > 0$ except for a pole at $s = 1$ of residue $1$.
+    The Riemann zeta function $\zeta(s) = \sum_{m = 1}^\infty \frac1{m^s}$ defines a holomorphic function for $\Re(s) > 1$, and admits a meromorphic continuation to $\C \setminus \set{1}$, with a simple pole at $s = 1$ of residue $1$.
 \end{lemma}
-\begin{proof}
-    For $\Re(s) > 1$ we have $\abs{\frac1{m^s}} = \frac1{m^{\Re(s)}}$, so the series $\sum_{m = 1}^\infty \frac1{m^s}$ converges absolutely. We note that 
-    $$
-        \zeta(s) = \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} + \sum_{m = 1}^\infty \frac{(-1)^{m + 1} + 1}{m^s} = \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} + \sum_{m = 1}^\infty \frac{2}{2^sm^s} = \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} + 2^{1 - s}\zeta(s)
-    $$
-    and so 
-    \begin{align}\label{newzeta}
-        \zeta(s) = \frac1{1 - 2^{1 - s}}\sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s}
-    \end{align}    
-    and that
-    $$
-        \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} = \sum_{m = 1}^\infty \frac{1}{(2m - 1)^s} - \sum_{m = 1}^\infty \frac{1}{(2m)^s}
-    $$
-    Applying the mean value theorem to $x^{-s}$ on $(2n - 1, 2n)$, we have $\abs{\frac{d}{dx}x^{-s}} = \abs{-sx^{-s - 1}} = \abs{s}x^{-\Re(s) - 1}$, and so
-    $$
-        \abs{\frac1{(2n - 1)^s} - \frac1{(2n)^s}} \leq \frac{\abs{s}}{(2n - 1)^{\Re(s) + 1}}
-    $$
-    and so (\ref{newzeta}) converges for $\Re(s) > 0$, $s \neq 1$. To show $\zeta(s)$ has a simple pole at $s = 1$ and compute the residue we compute $\lim_{s \to 1^+}\zeta(s)$ as a real limit. For $s > 1$ we have
-    $$
-        \frac1{s - 1} = \int_1^\infty \frac1{t^s} dt < \sum_{m = 1}^\infty \frac1{m^s} < 1 + \int_1^\infty \frac1{t^s} dt = \frac{s}{s - 1}
-    $$
-    and so multiplying by $s - 1$, we have $\Res_{s = 1}\zeta = \lim_{s \to 1^+}(s - 1)\zeta(s) = 1$, and that $(s - 1)^{-1}$ is the first term in the Laurent series expansion of $\zeta$ around $1$.
-\end{proof}
+% \begin{proof}
+%     For $\Re(s) > 1$ we have $\abs{\frac1{m^s}} = \frac1{m^{\Re(s)}}$, so the series $\sum_{m = 1}^\infty \frac1{m^s}$ converges absolutely. We note that 
+%     $$
+%         \zeta(s) = \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} + \sum_{m = 1}^\infty \frac{(-1)^{m + 1} + 1}{m^s} = \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} + \sum_{m = 1}^\infty \frac{2}{2^sm^s} = \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} + 2^{1 - s}\zeta(s)
+%     $$
+%     and so 
+%     \begin{align}\label{newzeta}
+%         \zeta(s) = \frac1{1 - 2^{1 - s}}\sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s}
+%     \end{align}    
+%     and that
+%     $$
+%         \sum_{m = 1}^\infty \frac{(-1)^{m + 1}}{m^s} = \sum_{m = 1}^\infty \frac{1}{(2m - 1)^s} - \sum_{m = 1}^\infty \frac{1}{(2m)^s}
+%     $$
+%     Applying the mean value theorem to $x^{-s}$ on $(2n - 1, 2n)$, we have $\abs{\frac{d}{dx}x^{-s}} = \abs{-sx^{-s - 1}} = \abs{s}x^{-\Re(s) - 1}$, and so
+%     $$
+%         \abs{\frac1{(2n - 1)^s} - \frac1{(2n)^s}} \leq \frac{\abs{s}}{(2n - 1)^{\Re(s) + 1}}
+%     $$
+%     and so (\ref{newzeta}) converges for $\Re(s) > 0$, $s \neq 1$. To show $\zeta(s)$ has a simple pole at $s = 1$ and compute the residue we compute $\lim_{s \to 1^+}\zeta(s)$ as a real limit. For $s > 1$ we have
+%     $$
+%         \frac1{s - 1} = \int_1^\infty \frac1{t^s} dt < \sum_{m = 1}^\infty \frac1{m^s} < 1 + \int_1^\infty \frac1{t^s} dt = \frac{s}{s - 1}
+%     $$
+%     and so multiplying by $s - 1$, we have $\Res_{s = 1}\zeta = \lim_{s \to 1^+}(s - 1)\zeta(s) = 1$, and that $(s - 1)^{-1}$ is the first term in the Laurent series expansion of $\zeta$ around $1$.
+% \end{proof}
 % Lemma 1: Riemann zeta admits a meromorphic continuation to $\Re(s) > 0$, simple pole at $s = 1$ of residue 1.
-
-The previous lemma suggests the asymptotic distribution of ideals of bounded norm should scale linearly, up to some error term. The following result describes how this error term relates to the convergence of our extension of $\zeta_K$.
-
+A proof of this result can be found in Chapter 12 of \hyperlink{apostol}{[1]}. The previous lemma in conjunction with Theorem \ref{acnf1} suggests the asymptotic distribution of ideals of bounded norm should scale linearly, up to some error term. The following result describes how this error term relates to the convergence of our extension of $\zeta_K$.
 \begin{lemma}
     Let $(a_m)$ be a sequence of complex numbers, $\sigma \in \R$ and suppose that $\sum_{m = 1}^t a_m = O(t^\sigma)$. Then the series $\sum_{m = 1}^\infty a_mm^{-s}$ defines a holomorphic function on $\Re(s) > \sigma$.
 \end{lemma}
 \begin{proof}
-    Let $\Re(s) > \sigma$. Applying Abel's theorem [\hyperref{apostol}{1}, Theorem 4.2] to $f(x) = x^{-s}$ and $A(x) = \sum_{m \leq x}a_m$ on $[1/2, x]$ and noting that $A(x) = 0$ for $x < 1$, we find
+    Let $\Re(s) > \sigma$. Applying Abel's theorem [Theorem 4.2, \hyperlink{apostol}{1}] to $f(x) = x^{-s}$ and $A(x) = \sum_{m \leq x}a_m$ on $[1/2, x]$ and noting that $A(x) = 0$ for $x < 1$, we find
     $$
         \sum_{m \leq x}a_mm^{-s} = A(x)x^{-s} - (-s)\int_{1/2}^x \frac{A(t)}{t^{s + 1}}dt = A(x)x^{-s} + s\int_1^x\frac{A(t)}{t^{s + 1}}dt
     $$
@@ -163,20 +161,20 @@ Putting these two together, we have
     $$
         \sum_{m = 1}^t a_m = \rho t + O(t^\sigma)
     $$
-    for some $\sigma \in [0, 1)$. Then $\sum_{m = 1}^\infty a_mm^{-s}$ defines a holomorphic function on $\Re(s) > 1$, with a meromorphic extension to $\Re(s) > \sigma$ holomorphic everywhere except for a simple pole at $s = 1$ of residue $\rho$.
+    for some $\sigma < 1$. Then $\sum_{m = 1}^\infty a_mm^{-s}$ defines a holomorphic function on $\Re(s) > 1$, with a meromorphic extension to $\Re(s) > \sigma$ holomorphic everywhere except for a simple pole at $s = 1$ of residue $\rho$.
 \end{lemma}
 \begin{proof}
     Letting $b_m = a_m - \rho$ be the error term, with $\sum_{m = 1}^t b_m = O(t^\sigma)$. Then
     $$
         \sum_{m = 1}^\infty a_mm^{-s} = \rho\sum_{m = 1}^\infty m^{-s} + \sum_{m = 1}^\infty b_mm^{-s} = \rho\zeta(s) + \sum_{m = 1}^\infty b_mm^{-s}
     $$
-    The first term is holomorphic on $\Re(s) > 1$ with extension to $\Re(s) > 0$ holomorphic everywhere except for a pole at $s = 1$, and the second term is holomorphic everywhere on $\Re(s) > \sigma$. Thus as $0 \leq \sigma < 1$, their sum admits a meromorphic extension to $\Re(s) > \sigma$ with a simple pole at $s = 1$ of residue $\rho \cdot 1 + 0 = \rho$.
+    The first term is holomorphic on $\Re(s) > 1$ with extension to $\Re(s) > 0$ holomorphic everywhere except for a pole at $s = 1$, and the second term is holomorphic everywhere on $\Re(s) > \sigma$. Thus as $\sigma < 1$, their sum admits a meromorphic extension to $\Re(s) > \sigma$ with a simple pole at $s = 1$ of residue $\rho \Res_{s = 1}\zeta + 0 = \rho$.
 \end{proof}
 The above lemma applies in particular to when the coefficients $a_m$ are counting the number of objects with some numeric property (in our case the ideal norm) equal to $m$, since we can use counting arguments to reason about the behaviour of the corresponding series, and vice versa.
 % Lemma 3: $(a_i)$ with $\sum a_i = \rho t + O(t^\sigma)$, $\sigma \in [0, 1)$.
 % Motivation for why this is relevant
 \section{The distribution of ideals}
-Throughout this section, we take $K$ to be a fixed number field with $r$ real embeddings and $2s$ complex embeddings, with degree $n$
+Throughout this section, we take $K$ to be a fixed number field with $r$ real embeddings $K \hookrightarrow \R$ and $2s$ complex embeddings $K \hookrightarrow \C$, with degree $n = [K : \Q]$.
 
 To reason about the convergence and residues of $\zeta_K$, we use Lemma \ref{growthrate} and reinterpret principal ideals as points in some reasonable subset of $K_\R^*$. Comparing Theorem \ref{acnf1} to Lemma \ref{growthrate}, we may expect that the number of ideals of norm at most $t$ is asymptotically
 $$
@@ -314,7 +312,16 @@ Combining this with Lemma \ref{growthrate} and recalling that the sum of coeffic
         \Res_{s = 1}\zeta_K = \frac{2^r(2\pi)^sh_KR_K}{\omega_K\abs{\Delta_K}^{1/2}}
     $$
 \end{theorem}
+The simplest application of this formula is in computing (or approximating) these invariants of the number field $K$. We can approximate this residue to arbitrary precision as in \hyperlink{stevenhagen}{[2, Chapter 6]}, and given all but one of these values, the above result allows us to compute the remaining value. This is particularly reliable when we look to compute $h_K$, which we can be relatively certain about as it only takes on integer values.
 
+A simple example of this is in the case of an imaginary quadratic field $K = \Q(\sqrt{-d})$ where $d$ is squarefree, where we can easily compute all quantities except for $h_K$. In these such fields there are no non-trivial units, and so the regulator $R_K$ is just 1, corresponding to the empty product. Here $K$ has $r = 0$ real embeddings and $s = 1$ conjugate pair of embeddings. The ring of integers $\o_K$ is given by
+\begin{align*}
+    \o_K = \begin{cases}
+        \Z[\sqrt{-d}] &d \equiv 1, 2 \mod 4 \\
+        \Z\lr[]{\frac{1 + \sqrt{-d}}{2}} &d\equiv 3 \mod 4
+    \end{cases}
+\end{align*}
+with discriminant $-4d$ in the first case, and $-d$ in the second. The unit group of $\Q(\sqrt{-d})$ is generated by $i$ when $d = -1$, $\zeta_3 = \frac{-1 + \sqrt{-3}}{2}$ when $d = -3$, and $-1$ otherwise, so we have 4, 6 and 2 roots of unity in each of these cases. The process for computing the residue mentioned above reduces to looking at congruence conditions, and with sufficient precision we can compute the class number of any imaginary quadratic field in this way.
 \chapter{References}
 \begin{enum}
     \item \hypertarget{apostol}{\textsc{Apostol, T.}, (1976), \emph{Introduction to Analytic Number Theory}, Undergraduate Texts in Mathematics. Springer-Verlag, New York-Heidelberg}
